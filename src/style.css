@@ -1,0 +1,12 @@
+body {
+    margin: 0;
+    min-width: 320px;
+}
+
+#app {
+    margin: 0 auto;
+}
+
+html,body,#app{
+    height: 100%;
+}
