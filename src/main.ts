@@ -5,11 +5,13 @@ import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import router from "@/router/index.ts";
 import {createPinia} from "pinia";
+import {loadSvg} from "@/icons";
 
 
 const pinia = createPinia()
 const app = createApp(App)
-app.use(router)
-app.use(pinia)
-app.use(ElementPlus)
-app.mount('#app')
+loadSvg(app)
+app.use(router).use(pinia).use(ElementPlus)
+router.isReady().then(()=>{
+    app.mount('#app')
+})
