@@ -5,13 +5,15 @@ import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import router from "@/router/index.ts";
 import {createPinia} from "pinia";
+import "virtual:svg-icons-register"
 import {loadSvg} from "@/icons";
-
+import * as ElementPlusIconsVue from "@element-plus/icons-vue"
 
 const pinia = createPinia()
 const app = createApp(App)
+for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+    app.component(key, component)
+}
 loadSvg(app)
 app.use(router).use(pinia).use(ElementPlus)
-router.isReady().then(()=>{
-    app.mount('#app')
-})
+app.mount('#app')
