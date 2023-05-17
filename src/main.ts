@@ -8,6 +8,7 @@ import {createPinia} from "pinia";
 import "virtual:svg-icons-register"
 import {loadSvg} from "@/icons";
 import * as ElementPlusIconsVue from "@element-plus/icons-vue"
+import '@/router/permission.ts'
 
 const pinia = createPinia()
 const app = createApp(App)
