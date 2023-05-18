@@ -3,7 +3,7 @@
 </script>
 
 <template>
-test2-2
+  <div style="width: 100%;height: 100px;background-color: saddlebrown"></div>
 </template>
 
 <style scoped lang="less">

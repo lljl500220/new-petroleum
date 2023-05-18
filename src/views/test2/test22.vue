@@ -3,12 +3,9 @@
 </script>
 
 <template>
-test1-1
+  <div style="width: 100%;height: 100px;background-color: fuchsia"></div>
 </template>
 
 <style scoped lang="less">
-@color: red
-body {
-  color: @color;
-}
+
 </style>

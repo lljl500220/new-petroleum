@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import Menus from "@/layout/Menus.vue";
+import Menus from "@/layout/menu/Menus.vue";
 import {useMenuStore} from "@/store/menu.ts";
-import Tags from "@/layout/Tags.vue";
+import Tags from "@/layout/tag/Tags.vue";
 import AppMain from "@/layout/AppMain.vue";
 
 const menuStore = useMenuStore()
