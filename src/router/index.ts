@@ -8,23 +8,33 @@ export const staticRoutes: RouteRecordRaw[] = [
         name: 'index',
         meta: {
             title: '首页',
-            menu: true,
             elIcon: 'HomeFilled',
         }
     },
     {
         path: '/404',
         component: () => import('@/views/404.vue'),
-        name: '404',
         meta: {
-            title: '404',
-            menu: true,
-            elIcon: 'WarnTriangleFilled'
-        }
+            hidden: true,
+        },
+        alias: '/:pathMatch(.*)*'
     },
-]
-
-export const asyncRoutes: RouteRecordRaw[] = [
+    {
+        path: '/testOnly',
+        name: 'TestOnly',
+        component: Layout,
+        children:[
+            {
+                path: 'only',
+                name: 'only',
+                component: () => import('@/views/test2/test21.vue'),
+                meta: {
+                    title: 'TestOnly',
+                    elIcon: 'View'
+                },
+            }
+        ]
+    },
     {
         path: '/test',
         name: 'Test',
@@ -43,42 +53,29 @@ export const asyncRoutes: RouteRecordRaw[] = [
                 },
             },
             {
-                path: 'test12',
-                name: 'test12',
+                path: 'test1-23-12',
+                name: 'test1-23-12',
                 component: () => import('@/views/test1/test12.vue'),
                 meta: {
-                    title: 'test1-2',
+                    title: 'test1-23-12',
+                    elIcon: 'View'
                 },
+                children:[
+                    {
+                        path: 'test2-23-12',
+                        name: 'test2-23-12',
+                        component: () => import('@/views/test2/test22.vue'),
+                        meta: {
+                            title: 'test2-23-12',
+                        },
+                    }
+                ]
             }
         ]
     },
-    {
-        path: '/test2',
-        name: 'Test2',
-        component: Layout,
-        meta: {
-            title: 'test2',
-            elIcon: 'View'
-        },
-        children: [
-            {
-                path: 'test21',
-                name: 'test21',
-                component: () => import('@/views/test2/test21.vue'),
-                meta: {
-                    title: 'test2-1',
-                },
-            },
-            {
-                path: 'test22',
-                name: 'test22',
-                component: () => import('@/views/test2/test22.vue'),
-                meta: {
-                    title: 'test2-2',
-                },
-            }
-        ]
-    },
+]
+
+export const asyncRoutes: RouteRecordRaw[] = [
 ]
 
 const router = createRouter({

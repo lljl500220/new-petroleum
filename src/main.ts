@@ -9,12 +9,14 @@ import {loadSvg} from "@/icons";
 import * as ElementPlusIconsVue from "@element-plus/icons-vue"
 import '@/router/permission.ts'
 import pinia from "@/store";
+// import {loadDirectives} from "@/directives";
 
 const app = createApp(App)
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
     app.component(key, component)
 }
 loadSvg(app)
+// loadDirectives(app)
 app.use(router).use(pinia).use(ElementPlus)
 
 router.isReady().then(() => {

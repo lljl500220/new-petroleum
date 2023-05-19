@@ -40,11 +40,11 @@ const key = computed(() => {
 
 .fade-transform-enter {
   opacity: 0;
-  transform: translateX(-30px);
+  transform: translateX(100px);
 }
 
 .fade-transform-leave-to {
   opacity: 0;
-  transform: translateX(30px);
+  transform: translateX(100px);
 }
 </style>

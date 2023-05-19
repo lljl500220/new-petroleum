@@ -6,7 +6,7 @@ import {staticRoutes} from "@/router";
 import store from "@/store/index.ts";
 
 export const usePermissionStore = defineStore("permission", () => {
-    const routes = ref<RouteRecordRaw[]>([])
+    const routes = ref<RouteRecordRaw[]>(staticRoutes)
     const dynamicRoutes = ref<RouteRecordRaw[]>([])
 
     const setRoutes = (asyncRoutes: RouteRecordRaw[]) => {
