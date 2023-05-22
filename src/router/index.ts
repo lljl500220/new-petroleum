@@ -4,7 +4,7 @@ const Layout = () => import('@/layout/index.vue')
 export const staticRoutes: RouteRecordRaw[] = [
     {
         path: '/',
-        component: () => import('@/components/HelloWorld.vue'),
+        component: () => import('@/views/404.vue'),
         name: 'index',
         meta: {
             title: '首页',

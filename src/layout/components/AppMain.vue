@@ -27,10 +27,11 @@ const key = computed(() => {
 <style lang="less">
 .app-main {
   min-height: 100%;
-  width: 100%;
-  position: relative;
+  width: calc(100% - var(--np-sidebar-width));
+  position: absolute;
+  right: 0;
   overflow: hidden;
-  background-color: #f2f3f5;
+  background-color: var(--np-app-bg-color);
 }
 
 .fade-transform-leave-active,

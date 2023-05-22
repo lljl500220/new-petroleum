@@ -5,15 +5,15 @@ let locale = zhCn;
 </script>
 
 <template>
-    <el-config-provider :locale="locale">
-        <router-view></router-view>
-    </el-config-provider>
+  <el-config-provider :locale="locale">
+    <router-view></router-view>
+  </el-config-provider>
 </template>
 
 <style scoped lang="less">
 @import "src/assets/less/index.less";
 
-body{
-    background: var(--main-bg-color);
+body {
+  background: var(--main-bg-color);
 }
 </style>

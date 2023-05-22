@@ -19,7 +19,10 @@ export const useTagsStore = defineStore('tags', () => {
         })) {
             return
         }
-        visitedViews.value.push(Object.assign({}, tag))
+
+        for (let i = 0; i < 10; i++) {
+            visitedViews.value.push(Object.assign({}, tag))
+        }
     }
 
     const addCachedViews = (tag: ITagView) => {

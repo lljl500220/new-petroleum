@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {ref} from "vue";
 import {ElCascader} from "element-plus";
+import { toggleDark } from "@/composables";
 
 const props1 = {
   checkStrictly: true,
@@ -286,7 +287,7 @@ const options = [
 </script>
 
 <template>
-  <div style="width: 100%">
+  <div class="app-container">
     <div class="m-4">
       <p>Select any level of options (Single selection)</p>
       <el-cascader ref="cas1" :options="options" :props="props1" clearable />
@@ -295,9 +296,9 @@ const options = [
       <p>Select any level of options (Multiple selection)</p>
       <el-cascader :options="options" :props="props2" clearable />
     </div>
+    <el-button @click="toggleDark()">切换主题</el-button>
   </div>
 </template>
 
-<style scoped lang="less">
-
+<style scoped lang="scss">
 </style>

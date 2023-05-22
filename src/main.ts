@@ -1,24 +1,29 @@
-import {createApp} from 'vue'
-import './style.css'
-import App from './App.vue'
-import ElementPlus from 'element-plus'
-import 'element-plus/dist/index.css'
+import { createApp } from "vue";
+import * as ElementPlusIconsVue from "@element-plus/icons-vue";
+import "virtual:svg-icons-register";
+import ElementPlus from "element-plus";
+
+import App from "./App.vue";
 import router from "@/router/index.ts";
-import "virtual:svg-icons-register"
-import {loadSvg} from "@/icons";
-import * as ElementPlusIconsVue from "@element-plus/icons-vue"
-import '@/router/permission.ts'
+import { loadSvg } from "@/icons";
+import "@/router/permission.ts";
 import pinia from "@/store";
 // import {loadDirectives} from "@/directives";
 
-const app = createApp(App)
+import "./style.css";
+import "@/styles/index.scss";
+import "element-plus/theme-chalk/src/message.scss";
+import "element-plus/dist/index.css";
+
+
+const app = createApp(App);
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
-    app.component(key, component)
+  app.component(key, component);
 }
-loadSvg(app)
+loadSvg(app);
 // loadDirectives(app)
-app.use(router).use(pinia).use(ElementPlus)
+app.use(router).use(pinia).use(ElementPlus);
 
 router.isReady().then(() => {
-    app.mount('#app')
-})
+  app.mount("#app");
+});

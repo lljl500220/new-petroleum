@@ -11,7 +11,6 @@ export const usePermissionStore = defineStore("permission", () => {
 
     const setRoutes = (asyncRoutes: RouteRecordRaw[]) => {
         routes.value = staticRoutes.concat(asyncRoutes)
-        console.log(routes.value)
     }
 
 
