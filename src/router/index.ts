@@ -23,6 +23,9 @@ export const staticRoutes: RouteRecordRaw[] = [
         path: '/testOnly',
         name: 'TestOnly',
         component: Layout,
+        meta:{
+            elIcon: 'View'
+        },
         children:[
             {
                 path: 'only',
@@ -33,7 +36,7 @@ export const staticRoutes: RouteRecordRaw[] = [
                     elIcon: 'View'
                 },
             }
-        ]
+        ],
     },
     {
         path: '/test',

@@ -24,13 +24,14 @@ const key = computed(() => {
   </section>
 </template>
 
-<style lang="less">
+<style scoped lang="less">
 .app-main {
-  min-height: 100%;
+  min-height: calc(100%  - var(--np-title-wrapper-height) - var(--np-tagsview-height));
   width: calc(100% - var(--np-sidebar-width));
   position: absolute;
+  transition: all 0.28s;
   right: 0;
-  overflow: hidden;
+  top: calc(var(--np-title-wrapper-height) + var(--np-tagsview-height));
   background-color: var(--np-app-bg-color);
 }
 
@@ -41,11 +42,11 @@ const key = computed(() => {
 
 .fade-transform-enter {
   opacity: 0;
-  transform: translateX(100px);
+  transform: translateX(30px);
 }
 
 .fade-transform-leave-to {
   opacity: 0;
-  transform: translateX(100px);
+  transform: translateX(30px);
 }
 </style>

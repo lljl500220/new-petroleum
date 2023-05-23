@@ -2,5 +2,24 @@
   --np-title-wrapper-height: 65px;
   --np-title-wrapper-bg-color: #19274c;
   --np-sidebar-width: 220px;
-  --np-app-bg-color: #f2f3f5
+  --np-app-bg-color: #f2f3f5;
+  --np-sidebar-menu-bg-color: #001428;
+  --el-menu-bg-color: #001428 !important;
+  --el-menu-text-color: #c0c4cc !important;
+  --el-menu-active-color: #ffffff !important;
+  --el-menu-hover-bg-color: #ffffff10 !important;
+
+  --np-tagsview-height: 34px;
+  --np-tagsview-tag-text-color: #495060;
+  --np-tagsview-tag-active-text-color: #ffffff;
+  --np-tagsview-tag-bg-color: #ffffff;
+  --np-tagsview-tag-active-bg-color: var(--el-color-primary);
+  --np-tagsview-tag-border-radius: 2px;
+  --np-tagsview-tag-border-color: #d8dce5;
+  --np-tagsview-tag-active-border-color: var(--el-color-primary);
+  --np-tagsview-tag-active-before-color: #ffffff;
+  --np-tagsview-tag-icon-hover-bg-color: #00000030;
+  --np-tagsview-tag-icon-hover-color: #ffffff;
+  /** RightPanel 组件  */
+  --np-rightpanel-button-bg-color: #001428;
 }
