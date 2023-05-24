@@ -4,7 +4,7 @@ const Layout = () => import("@/layout/index.vue");
 export const staticRoutes: RouteRecordRaw[] = [
   {
     path: "/",
-    component: () => import("@/views/404.vue"),
+    component: () => import("@/views/ChartsView/index.vue"),
     name: "index",
     meta: {
       title: "首页",
@@ -22,21 +22,10 @@ export const staticRoutes: RouteRecordRaw[] = [
   {
     path: "/testOnly",
     name: "TestOnly",
-    component: Layout,
+    component: import("@/views/ChartsView/content.vue"),
     meta: {
       elIcon: "View",
     },
-    children: [
-      {
-        path: "only",
-        name: "only",
-        component: () => import("@/views/test2/test21.vue"),
-        meta: {
-          title: "TestOnly",
-          elIcon: "View",
-        },
-      },
-    ],
   },
   {
     path: "/test",
