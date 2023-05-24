@@ -1,89 +1,88 @@
-import {createRouter, createWebHistory, RouteRecordRaw} from "vue-router";
+import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 
-const Layout = () => import('@/layout/index.vue')
+const Layout = () => import("@/layout/index.vue");
 export const staticRoutes: RouteRecordRaw[] = [
-    {
-        path: '/',
-        component: () => import('@/views/404.vue'),
-        name: 'index',
-        meta: {
-            title: '首页',
-            elIcon: 'HomeFilled',
-        }
+  {
+    path: "/",
+    component: () => import("@/views/404.vue"),
+    name: "index",
+    meta: {
+      title: "首页",
+      elIcon: "HomeFilled",
     },
-    {
-        path: '/404',
-        component: () => import('@/views/404.vue'),
+  },
+  {
+    path: "/404",
+    component: () => import("@/views/404.vue"),
+    meta: {
+      hidden: true,
+    },
+    alias: "/:pathMatch(.*)*",
+  },
+  {
+    path: "/testOnly",
+    name: "TestOnly",
+    component: Layout,
+    meta: {
+      elIcon: "View",
+    },
+    children: [
+      {
+        path: "only",
+        name: "only",
+        component: () => import("@/views/test2/test21.vue"),
         meta: {
-            hidden: true,
+          title: "TestOnly",
+          elIcon: "View",
         },
-        alias: '/:pathMatch(.*)*'
+      },
+    ],
+  },
+  {
+    path: "/test",
+    name: "Test",
+    component: Layout,
+    meta: {
+      title: "test1",
+      elIcon: "View",
     },
-    {
-        path: '/testOnly',
-        name: 'TestOnly',
-        component: Layout,
-        meta:{
-            elIcon: 'View'
-        },
-        children:[
-            {
-                path: 'only',
-                name: 'only',
-                component: () => import('@/views/test2/test21.vue'),
-                meta: {
-                    title: 'TestOnly',
-                    elIcon: 'View'
-                },
-            }
-        ],
-    },
-    {
-        path: '/test',
-        name: 'Test',
-        component: Layout,
+    children: [
+      {
+        path: "test11",
+        name: "test11",
+        component: () => import("@/views/test1/test11.vue"),
         meta: {
-            title: 'test1',
-            elIcon: 'View'
+          title: "test1-1",
+        },
+      },
+      {
+        path: "test1-23-12",
+        name: "test1-23-12",
+        component: () => import("@/views/test1/test12.vue"),
+        meta: {
+          title: "test1-23-12",
+          elIcon: "View",
         },
         children: [
-            {
-                path: 'test11',
-                name: 'test11',
-                component: () => import('@/views/test1/test11.vue'),
-                meta: {
-                    title: 'test1-1',
-                },
+          {
+            path: "test2-23-12",
+            name: "test2-23-12",
+            component: () => import("@/views/test2/test22.vue"),
+            meta: {
+              title: "test2-23-12",
             },
-            {
-                path: 'test1-23-12',
-                name: 'test1-23-12',
-                component: () => import('@/views/test1/test12.vue'),
-                meta: {
-                    title: 'test1-23-12',
-                    elIcon: 'View'
-                },
-                children:[
-                    {
-                        path: 'test2-23-12',
-                        name: 'test2-23-12',
-                        component: () => import('@/views/test2/test22.vue'),
-                        meta: {
-                            title: 'test2-23-12',
-                        },
-                    }
-                ]
-            }
-        ]
-    },
-]
+          },
+        ],
+      },
+    ],
+  },
+];
 
-export const asyncRoutes: RouteRecordRaw[] = [
-]
+export const asyncRoutes: RouteRecordRaw[] = [];
 
 const router = createRouter({
-    history: createWebHistory('/'),
-    routes: staticRoutes
-})
+  history: createWebHistory("/"),
+  routes: staticRoutes,
+});
 
-export default router
+export default router;

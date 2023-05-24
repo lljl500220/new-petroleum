@@ -12,7 +12,7 @@ const route = useRoute();
 
 watch(
   () => menuStore.collapse,
-  (newValue, oldValue) => {
+  (newValue) => {
     if (newValue) {
       document.documentElement.style.setProperty("--np-sidebar-width", "60px");
     } else {
@@ -21,7 +21,6 @@ watch(
   }
 );
 </script>
-
 <template>
   <div class="menu-container">
     <el-scrollbar>
@@ -35,8 +34,7 @@ watch(
           :item="route"
           :key="route.path"
           :base-path="route.path"
-        >
-        </SideBarItem>
+        />
       </el-menu>
     </el-scrollbar>
   </div>

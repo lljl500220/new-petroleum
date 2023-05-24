@@ -1,28 +1,19 @@
 <script setup lang="ts">
-import { useMenuStore } from "@/store/menu.ts";
 import AppMain from "@/layout/components/AppMain.vue";
-import { SideBar,TagsView } from "@/layout/components/index.ts";
-import { computed } from "vue";
-
-const menuStore = useMenuStore();
-
-const changeCollapse = () => {
-  menuStore.collapse = !menuStore.collapse;
-};
-
+import { SideBar, TagsView, NavigationBar } from "@/layout/components/index.ts";
 </script>
 
 <template>
   <div class="app-wrapper">
     <div class="title-wrapper">
-
+      <NavigationBar />
     </div>
     <div class="main-container">
       <SideBar class="sidebar-container" />
       <div class="tags">
-        <tags-view></tags-view>
+        <tags-view />
       </div>
-      <AppMain></AppMain>
+      <AppMain />
     </div>
   </div>
 </template>
@@ -31,7 +22,6 @@ const changeCollapse = () => {
 .tags {
   width: calc(100% - var(--np-sidebar-width));
   height: var(--np-tagsview-height);
-  background-color: red;
   position: fixed;
   transition: all 0.28s;
   z-index: 2;
@@ -76,9 +66,10 @@ const changeCollapse = () => {
       width: var(--np-sidebar-width);
       transition: width 0.28s;
       bottom: 0;
+      z-index: 3;
+      box-shadow: 1px 0 5px -1px #d8dce5;
       height: calc(100% - var(--np-title-wrapper-height));
     }
   }
 }
-
 </style>

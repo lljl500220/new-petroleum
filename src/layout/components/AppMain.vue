@@ -1,23 +1,26 @@
 <script setup lang="ts">
-import {computed} from "vue"
-import {useRoute} from "vue-router"
-import {useTagsStore} from "@/store/tags.ts";
+import { computed } from "vue";
+import { useRoute } from "vue-router";
+import { useTagsStore } from "@/store/tags.ts";
 
-const route = useRoute()
-const tagsViewStore = useTagsStore()
+const route = useRoute();
+const tagsViewStore = useTagsStore();
 
 const key = computed(() => {
-  return route.path
-})
-
+  return route.path;
+});
 </script>
 
 <template>
   <section class="app-main">
     <router-view v-slot="{ Component }">
-      <transition name="fade-transform" mode="out-in" enter-from-class="fade-transform-enter">
+      <transition
+        name="fade-transform"
+        mode="out-in"
+        enter-from-class="fade-transform-enter"
+      >
         <keep-alive :include="tagsViewStore.cachedViews">
-          <component :is="Component" :key="key"/>
+          <component :is="Component" :key="key" />
         </keep-alive>
       </transition>
     </router-view>
@@ -26,7 +29,9 @@ const key = computed(() => {
 
 <style scoped lang="less">
 .app-main {
-  min-height: calc(100%  - var(--np-title-wrapper-height) - var(--np-tagsview-height));
+  min-height: calc(
+    100% - var(--np-title-wrapper-height) - var(--np-tagsview-height)
+  );
   width: calc(100% - var(--np-sidebar-width));
   position: absolute;
   transition: all 0.28s;

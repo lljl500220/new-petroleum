@@ -48,7 +48,7 @@ const theOnlyOneChild = computed(() => {
 });
 
 const resolvePath = (routePath: string) => {
-  return path.resolve(<string>props.basePath, routePath);
+  return path.resolve(props.basePath, routePath);
 };
 </script>
 
@@ -100,8 +100,6 @@ const resolvePath = (routePath: string) => {
           v-for="child in props.item.children"
           :key="child.path"
           :item="child"
-          :is-collapse="props.isCollapse"
-          :is-first-level="false"
           :base-path="resolvePath(child.path)"
         />
       </template>
