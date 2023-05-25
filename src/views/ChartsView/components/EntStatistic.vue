@@ -36,12 +36,12 @@ const props = defineProps<Props>();
   justify-content: space-around;
 
   .el-statistic__head {
-    font-size: px2rem(12);
+    font-size: px2rem(20);
     color: #fff;
   }
 
   .el-statistic__content {
-    font-size: px2rem(12);
+    font-size: px2rem(20);
     color: #fff;
   }
 }

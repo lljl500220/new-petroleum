@@ -214,6 +214,20 @@ $design_height: 992; //设计稿的高度，根据实际项目调整
   @return calc($px/$design_font_size) + rem;
 }
 
+@mixin title {
+  position: absolute;
+  font-size: px2rem(20);
+  letter-spacing: 5px;
+  font-weight: 400;
+  font-family: "SimSun",FangSong, serif;
+  color: #fff;
+  text-align: center;
+  line-height: px2rem(43);
+  left: 50%;
+  transform: translateX(-50%);
+  text-shadow: 0 0 10px #5b66e3,0 0 20px #5b66e3,0 0 30px #5b66e3,0 0 40px #5b66e3;
+}
+
 .screen-wrapper {
   width: 100%;
   height: 100%;
@@ -285,18 +299,8 @@ $design_height: 992; //设计稿的高度，根据实际项目调整
 
           &:before {
             content: "接入数据总量";
-            position: absolute;
-            font-size: px2rem(20);
-            color: #64c3e5;
-            font-weight: lighter;
-            text-align: center;
-            line-height: px2rem(43);
-            height: px2rem(43);
-            width: px2rem(381);
-            left: 50%;
-            transform: translateX(-50%);
-            background: url("../../assets/ChartsViewImg/title-bg1.png") no-repeat;
-            background-size: contain;
+            @include title
+            //background-color: rgba(144,123,245,0.1);
           }
           .btn-content {
             display: flex;
@@ -362,18 +366,7 @@ $design_height: 992; //设计稿的高度，根据实际项目调整
           height: px2rem(190);
           &:before {
             content: "企业档案";
-            position: absolute;
-            font-size: px2rem(20);
-            color: #64c3e5;
-            font-weight: lighter;
-            text-align: center;
-            line-height: px2rem(43);
-            height: px2rem(43);
-            width: px2rem(381);
-            left: 50%;
-            transform: translateX(-50%);
-            background: url("../../assets/ChartsViewImg/title-bg1.png") no-repeat;
-            background-size: contain;
+            @include title
           }
           .statistic-content{
             margin-top: px2rem(50);
@@ -385,18 +378,7 @@ $design_height: 992; //设计稿的高度，根据实际项目调整
           position: relative;
           &:before {
             content: "实时订单";
-            position: absolute;
-            font-size: px2rem(20);
-            color: #64c3e5;
-            font-weight: lighter;
-            text-align: center;
-            line-height: px2rem(43);
-            height: px2rem(43);
-            width: px2rem(381);
-            left: 50%;
-            transform: translateX(-50%);
-            background: url("../../assets/ChartsViewImg/title-bg1.png") no-repeat;
-            background-size: contain;
+            @include title
           }
         }
       }
@@ -413,18 +395,8 @@ $design_height: 992; //设计稿的高度，根据实际项目调整
             height: px2rem(300);
             &:before {
               content: "加油站经营情况趋势图(月)";
-              position: absolute;
-              font-size: px2rem(20);
-              color: #64c3e5;
-              font-weight: lighter;
-              text-align: center;
-              line-height: px2rem(45);
-              height: px2rem(45);
-              width: px2rem(500);
-              left: 50%;
-              transform: translateX(-50%);
-              background: url("../../assets/ChartsViewImg/title-bg2.png") no-repeat;
-              background-size: contain;
+              @include title;
+              letter-spacing: 0;
             }
           }
           &:nth-child(2){
@@ -432,18 +404,8 @@ $design_height: 992; //设计稿的高度，根据实际项目调整
             height: px2rem(290);
             &:before {
               content: "各地加油站加油金额占比(上月)";
-              position: absolute;
-              font-size: px2rem(20);
-              color: #64c3e5;
-              font-weight: lighter;
-              text-align: center;
-              line-height: px2rem(45);
-              height: px2rem(45);
-              width: px2rem(500);
-              left: 50%;
-              transform: translateX(-50%);
-              background: url("../../assets/ChartsViewImg/title-bg2.png") no-repeat;
-              background-size: contain;
+              @include title;
+              letter-spacing: 0;
             }
           }
           &:nth-child(3){
@@ -451,18 +413,8 @@ $design_height: 992; //设计稿的高度，根据实际项目调整
             height: px2rem(300);
             &:before {
               content: "各油品交易情况(上月)";
-              position: absolute;
-              font-size: px2rem(20);
-              color: #64c3e5;
-              font-weight: lighter;
-              text-align: center;
-              line-height: px2rem(45);
-              height: px2rem(45);
-              width: px2rem(500);
-              left: 50%;
-              transform: translateX(-50%);
-              background: url("../../assets/ChartsViewImg/title-bg2.png") no-repeat;
-              background-size: contain;
+              @include title;
+              letter-spacing: 0;
             }
           }
         }

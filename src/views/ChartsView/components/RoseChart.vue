@@ -17,8 +17,8 @@ const option = reactive({
     icon: "rect",
     orient: "vertical",
     right: 0,
-    itemHeight: 10,
-    itemWidth: 10,
+    itemHeight: 15,
+    itemWidth: 15,
     textStyle: {
       color: 'rgb(55, 162, 255)',
       fontSize:10,
