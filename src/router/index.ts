@@ -22,8 +22,9 @@ export const staticRoutes: RouteRecordRaw[] = [
   {
     path: "/testOnly",
     name: "TestOnly",
-    component: import("@/views/ChartsView/content.vue"),
+    component: () => import("@/views/ChartsView/content.vue"),
     meta: {
+      title: "数字大屏",
       elIcon: "View",
     },
   },

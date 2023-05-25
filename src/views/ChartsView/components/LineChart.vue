@@ -3,10 +3,10 @@
 </template>
 
 <script setup lang="ts">
-import {reactive, ref} from "vue";
+import { reactive, ref} from "vue";
 import * as echarts from 'echarts';
 
-const lineChart = ref(null)
+const lineChart = ref<HTMLElement>()
 
 const option = reactive({
   tooltip:{
@@ -14,12 +14,17 @@ const option = reactive({
   },
   legend: {
     data: ['交易金额','加油量'],
+    icon: 'circle',
+    itemHeight: 10,
     textStyle: {
       color: 'rgb(55, 162, 255)',
+      fontSize:10,
+      padding: [0,0,0,-8]
     },
   },
   grid:{
-    bottom: 30
+    bottom:20,
+    left: 50
   },
   xAxis: {
     type: 'category',
@@ -42,12 +47,13 @@ const option = reactive({
       },
       axisLabel: {
         color: 'rgb(55, 162, 255)',
+        fontSize: '10'
       },
       nameTextStyle: {
         color: 'rgb(55, 162, 255)',
       },
       splitLine: {
-        show: true,
+        show: false,
         lineStyle: {
           color: "#1A2C6B",
           type: "dashed",
@@ -65,7 +71,7 @@ const option = reactive({
         },
       },
       splitLine: {
-        show: true,
+        show: false,
         lineStyle: {
           color: "#1A2C6B",
           type: "dashed",
@@ -129,21 +135,35 @@ const option = reactive({
   ]
 })
 
+const dataObj = ref<any>()
+const xDataObj = ref<any>()
 const initChart = (data: number[][], xData: string[]) => {
+  dataObj.value = data
+  xDataObj.value = xData
   echarts.dispose(lineChart.value)
   const chart = echarts.init(lineChart.value)
   option.xAxis.data = xData
   option.series[0].data = data[0]
   option.series[1].data = data[1]
   chart.setOption(option, false)
+  window.addEventListener('resize',function () {
+    chart.resize()
+  })
 }
 
 defineExpose({initChart})
+
 </script>
 
-<style scoped lang="less">
+<style scoped lang="scss">
+@function px2rem($px) {
+  $design_font_size: 12;
+  @return calc($px/$design_font_size) + rem;
+}
 .line-chart-dom {
-  width: 100%;
-  height: 14rem;
+  position: absolute;
+  top: px2rem(50);
+  width: px2rem(550);
+  height: px2rem(250);
 }
 </style>

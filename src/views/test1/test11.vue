@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import {onMounted, ref} from "vue";
 import { ElCascader } from "element-plus";
 import { toggleDark } from "@/composables";
 
@@ -283,6 +283,13 @@ const options = [
     ],
   },
 ];
+
+onMounted(() => {
+  console.log(document.documentElement.clientHeight)
+  window.addEventListener('resize',(e)=>{
+    console.log(document.documentElement.clientHeight)
+  })
+})
 </script>
 
 <template>

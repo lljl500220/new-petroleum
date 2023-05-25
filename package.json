@@ -10,8 +10,10 @@
     "lint:eslint": "eslint --cache --max-warnings 0 \"src/**/*.{vue,js,ts,tsx}\" --fix"
   },
   "dependencies": {
+    "animate.css": "^4.1.1",
     "default-passive-events": "^2.0.0",
     "echarts": "^5.4.2",
+    "echarts-liquidfill": "^3.1.0",
     "element-plus": "^2.3.4",
     "fast-glob": "^3.2.12",
     "path-browserify": "^1.0.1",

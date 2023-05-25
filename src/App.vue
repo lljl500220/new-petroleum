@@ -12,8 +12,4 @@ const locale = zhCn;
 
 <style scoped lang="less">
 @import "src/assets/less/index.less";
-
-body {
-  background: var(--main-bg-color);
-}
 </style>

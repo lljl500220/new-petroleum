@@ -15,6 +15,7 @@ import "./style.css";
 import "@/styles/index.scss";
 import "element-plus/theme-chalk/src/message.scss";
 import "element-plus/dist/index.css";
+import 'animate.css';
 
 const app = createApp(App);
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
