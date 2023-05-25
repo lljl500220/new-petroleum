@@ -16,9 +16,13 @@ const option = reactive({
   legend: {
     icon: "rect",
     orient: "vertical",
-    right: 10,
+    right: 0,
+    itemHeight: 10,
+    itemWidth: 10,
     textStyle: {
-      color: "#83C3E9",
+      color: 'rgb(55, 162, 255)',
+      fontSize:10,
+      padding: [0,0,0,1]
     },
   },
   graphic: {
@@ -40,7 +44,7 @@ const option = reactive({
       label: {
         formatter: "{d}%",
         fontWeight: 'normal',
-        fontSize: '0.8rem',
+        fontSize: '1.2rem',
         color: 'rgb(55, 162, 255)',
       },
       itemStyle: {
@@ -68,13 +72,22 @@ const initChart = (data: any[]) => {
   option.series[0].data = data
   const chart = echarts.init(roseChart.value)
   chart.setOption(option, false)
+  window.addEventListener('resize',function () {
+    chart.resize()
+  })
 }
 defineExpose({initChart})
 </script>
 
-<style scoped lang="less">
+<style scoped lang="scss">
+@function px2rem($px) {
+  $design_font_size: 12;
+@return calc($px/$design_font_size) + rem;
+}
 .rose-chart-dom {
-  width: 100%;
-  height: calc(100% - 2rem);
+  position: absolute;
+  top: px2rem(50);
+  width: px2rem(550);
+  height: px2rem(240);
 }
 </style>

@@ -6,6 +6,7 @@ import EntStatistic from "@/views/ChartsView/components/EntStatistic.vue";
 import BusinessTable from "@/views/ChartsView/components/BusinessTable.vue";
 import LineChart from "@/views/ChartsView/components/LineChart.vue";
 import RoseChart from "@/views/ChartsView/components/RoseChart.vue";
+import BarChart from "@/views/ChartsView/components/BarChart.vue";
 
 const router = useRouter();
 const screenWrapper = ref<HTMLElement>();
@@ -96,11 +97,37 @@ const lineData = reactive({
   ],
 })
 //结束
+//加油金额占比 开始
+const roseChart: any = ref(null)
+const roseData = reactive({
+  data: [
+    {value: 101, name: '贵阳市', select: true},
+    {value: 102, name: '六盘水'},
+    {value: 103, name: '遵义市'},
+    {value: 104, name: '安顺市'},
+    {value: 105, name: '毕节市'},
+    {value: 106, name: '铜仁市'},
+    {value: 107, name: '黔南州'},
+    {value: 108, name: '黔西南'},
+    {value: 109, name: '黔东南'},
+  ],
+})
+//结束
 
+//油品交易情况 开始
+const barChart: any = ref(null)
+const barData = reactive({
+  data: [100, 233, 133, 234, 125, 145],
+  formatter: (value) => {
+    return value + "万元"
+  }
+})
 
 const resetChart = (name, index) => {
   map.value.changeMap(name, index);
   lineChart.value.initChart(lineData.data, lineData.xData)
+  roseChart.value.initChart(roseData.data)
+  barChart.value.initChart(barData.data, barData.formatter)
 };
 
 onMounted(() => {
@@ -168,6 +195,7 @@ onBeforeUnmount(() => {
             <rose-chart ref="roseChart"></rose-chart>
           </div>
           <div class="item-child content-border">
+            <bar-chart ref="barChart"></bar-chart>
           </div>
         </div>
         <div class="content-item"></div>
