@@ -32,7 +32,7 @@ interface Props {
 
 const props = defineProps<Props>()
 
-const top =ref('-' + props.rate + " + -90%")
+const top =ref('-' + props.rate + " + -99%")
 console.log(top.value)
 </script>
 
@@ -51,7 +51,7 @@ console.log(top.value)
   z-index: 1;
   background-color: rgba(0,0,0,0.3);
   //transform-origin: 10px;
-  animation: missingRate 8s linear infinite;
+  animation: missingRate 6s linear infinite;
 }
 .card {
   overflow: hidden;
@@ -74,12 +74,14 @@ console.log(top.value)
   }
   .bg-2{
     @include bg;
+    border-radius: 55%;
     //background-color: rgba(24,154,234,0.1);;
-    animation-delay: 1000ms;
+    animation-delay: 2s;
   }
   .bg-3{
     @include bg;
-    animation-delay: 2000ms;
+    border-radius: 35%;
+    animation-delay: 4s;
   }
 }
 @keyframes missingRate {

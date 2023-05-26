@@ -57,6 +57,44 @@ export const staticRoutes: RouteRecordRaw[] = [
       },
     ],
   },
+  {
+    path: "/test1",
+    name: "文档中心",
+    component: Layout,
+    meta: {
+      title: "文档中心",
+      elIcon: "Document",
+    },
+    children: [
+      {
+        path: "test11",
+        name: "帮助文档",
+        component: () => import("@/views/test1/test11.vue"),
+        meta: {
+          title: "帮助文档",
+        },
+      },
+      {
+        path: "test1-23-12",
+        name: "使用文档",
+        component: () => import("@/views/test1/test12.vue"),
+        meta: {
+          title: "使用文档",
+          elIcon: "Document",
+        },
+        children: [
+          {
+            path: "test2-23-12",
+            name: "菜单说明",
+            component: () => import("@/views/test2/test22.vue"),
+            meta: {
+              title: "菜单说明",
+            },
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 export const asyncRoutes: RouteRecordRaw[] = [];
