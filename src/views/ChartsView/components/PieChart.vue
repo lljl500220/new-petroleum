@@ -16,15 +16,16 @@ const option = reactive({
     textStyle: { // 主标题样式
       color: 'rgb(55, 162, 255)',
       fontWeight: 'bold',
-      fontSize: '1rem'
+      fontSize: '1.5rem'
     },
     left: '49%',
     top: '40%',
-    subtext: '244', // 副标题
+    subtext: '244次', // 副标题
     subtextStyle: { // 副标题样式
       color: 'rgb(55, 162, 255)',
-      fontSize: '0.8rem',
-      fontWeight: 'bold'
+      fontSize: '1.5rem',
+      fontWeight: 'bold',
+      fontFamily: 'SimSun, FangSong, serif'
     },
     textAlign: 'center' // 主、副标题水平居中显示
   },
@@ -32,29 +33,30 @@ const option = reactive({
     {
       name: 'Access From',
       type: 'pie',
-      radius: ['55%', '80%'],
+      radius: ['45%', '60%'],
       avoidLabelOverlap: false,
       itemStyle: {
         borderRadius: 10,
         borderColor: 'rgb(55, 162, 255)',
         borderWidth: 1
       },
+      labelLine: {
+        show:false
+      },
       label: {
         show: true,
         position: 'outside',
+        fontSize: "1.2rem",
         color: 'rgb(55, 162, 255)',
         formatter: "{b}\n{c}次",
       },
       emphasis: {
         label: {
           show: true,
-          fontSize: '1rem',
+          fontSize: '2rem',
           fontWeight: 'bold',
           color: 'rgb(55, 162, 255)',
         }
-      },
-      labelLine: {
-        show: false
       },
       data: []
     }
@@ -66,6 +68,9 @@ const initChart = (data: any[]) => {
   option.series[0].data = data
   const chart = echarts.init(pieChart.value)
   chart.setOption(option, false)
+  window.addEventListener('resize', function () {
+    chart.resize()
+  })
 }
 defineExpose({initChart})
 

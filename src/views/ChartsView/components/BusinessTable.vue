@@ -176,7 +176,7 @@ onBeforeUnmount(() => {
     }
 
     thead {
-      background-color: rgba(64, 169, 255, 0.5);
+      background-color: rgba(91,102,227,0.1);
     }
 
     .el-table__inner-wrapper::before {

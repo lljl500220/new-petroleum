@@ -10,13 +10,13 @@ const barChart:any = ref(null)
 
 const option = reactive({
   grid:{
-    // top:20
+    top:40
   },
   title:{
     text: '加油站关联数据对比',
     textStyle:{
       color: 'rgb(55, 162, 255)',
-      fontSize: '1rem'
+      fontSize: '1.5rem'
     },
     bottom: 10,
     right: '0'
@@ -28,8 +28,11 @@ const option = reactive({
     data: ['关联异常数','加油站数量'],
     left:0,
     bottom:'10',
+    itemHeight:10,
+    itemWidth: 10,
     textStyle: {
       color: 'rgb(55, 162, 255)',
+      fontSize: "1.2rem"
     },
   },
   xAxis: {
@@ -88,6 +91,9 @@ const initChart = (data: number[][]) => {
   option.series[1].data = data[1]
   const chart = echarts.init(barChart.value)
   chart.setOption(option, false)
+  window.addEventListener('resize', function () {
+    chart.resize()
+  })
 }
 defineExpose({initChart})
 </script>

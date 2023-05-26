@@ -20,15 +20,6 @@ export const staticRoutes: RouteRecordRaw[] = [
     alias: "/:pathMatch(.*)*",
   },
   {
-    path: "/testOnly",
-    name: "TestOnly",
-    component: () => import("@/views/ChartsView/content.vue"),
-    meta: {
-      title: "数字大屏",
-      elIcon: "View",
-    },
-  },
-  {
     path: "/test",
     name: "Test",
     component: Layout,

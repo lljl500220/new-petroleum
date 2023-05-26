@@ -148,7 +148,6 @@ const closeMenu = () => {
 watch(
   route,
   () => {
-    debugger;
     addTags();
   },
   {

@@ -14,6 +14,7 @@ const option = reactive({
     formatter: "{b} : {c}(万元)({d}%)",
   },
   legend: {
+    show:false,
     icon: "rect",
     orient: "vertical",
     right: 0,
@@ -37,12 +38,12 @@ const option = reactive({
   series: [
     {
       radius: ["20%", "70%"],
-      center: ["35%", "50%"],
+      // center: ["35%", "50%"],
       roseType: "area",
       type: "pie",
       avoidLabelOverlap: false,
       label: {
-        formatter: "{d}%",
+        formatter: "{b}{d}%",
         fontWeight: 'normal',
         fontSize: '1.2rem',
         color: 'rgb(55, 162, 255)',
