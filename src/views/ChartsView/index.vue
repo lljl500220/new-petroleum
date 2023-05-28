@@ -122,9 +122,6 @@ const roseData = reactive({
 const barChart: any = ref(null);
 const barData = reactive({
   data: [100, 233, 133, 234, 125, 145],
-  formatter: (value) => {
-    return value + "万元";
-  },
 });
 
 //预警模块
@@ -180,7 +177,7 @@ const resetChart = (name, index) => {
   map.value.changeMap(name, index);
   lineChart.value.initChart(lineData.data, lineData.xData);
   roseChart.value.initChart(roseData.data);
-  barChart.value.initChart(barData.data, barData.formatter);
+  barChart.value.initChart(barData.data);
   pieChart.value.initChart(pieData.data);
   stackBar.value.initChart(stackBarName, stackBarData.data);
 };

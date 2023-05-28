@@ -4,8 +4,8 @@ import CustomStackBar from "@/views/ChartsView/components/CustomStackBar.vue";
 
 <template>
   <div class="app-container">
-    <div ref="barDom" class="bar-3d" style="width:500px;height:300px">
-      <CustomStackBar></CustomStackBar>
+    <div ref="barDom" class="bar-3d" style="width: 500px; height: 300px">
+      <CustomStackBar />
     </div>
   </div>
 </template>

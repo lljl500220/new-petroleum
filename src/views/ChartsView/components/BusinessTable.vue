@@ -9,8 +9,7 @@
       :data="businessData"
     >
       <el-table-column prop="region" label="区域" align="center" />
-      <el-table-column prop="gas_station_name" label="加油站名称">
-      </el-table-column>
+      <el-table-column prop="gas_station_name" label="加油站名称" />
       <el-table-column prop="refueling_time" label="加油时间" align="center" />
       <el-table-column prop="station_no" label="油品" align="center" />
       <el-table-column prop="oil_quantity" label="加油量(升)" align="center" />
@@ -176,7 +175,7 @@ onBeforeUnmount(() => {
     }
 
     thead {
-      background-color: rgba(91,102,227,0.1);
+      background-color: rgba(91, 102, 227, 0.1);
     }
 
     .el-table__inner-wrapper::before {

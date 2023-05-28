@@ -1,7 +1,11 @@
 <template>
   <el-row>
-    <el-col v-for="item in props.param" :span="item.span">
-      <el-statistic :class="{'view-right':item.right,'view-left':item.left}" :title="item.title" :value="item.value"></el-statistic>
+    <el-col v-for="item in props.param" :key="item.span" :span="item.span">
+      <el-statistic
+        :class="{ 'view-right': item.right, 'view-left': item.left }"
+        :title="item.title"
+        :value="item.value"
+      />
     </el-col>
   </el-row>
 </template>
@@ -15,8 +19,8 @@ interface Statistic {
   title: string;
   value: number;
   span: number;
-  right: boolean,
-  left: boolean,
+  right: boolean;
+  left: boolean;
 }
 
 const props = defineProps<Props>();
@@ -45,10 +49,10 @@ const props = defineProps<Props>();
     color: #fff;
   }
 }
-.view-right{
+.view-right {
   margin-left: auto !important;
 }
-.view-left{
+.view-left {
   margin-right: auto !important;
 }
 </style>
