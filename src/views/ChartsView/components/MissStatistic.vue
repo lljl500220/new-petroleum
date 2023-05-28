@@ -37,7 +37,6 @@ interface Props {
 const props = defineProps<Props>();
 
 const top = ref("-" + props.rate + " + -99%");
-console.log(top.value);
 </script>
 
 <style scoped lang="scss">

@@ -39,7 +39,7 @@ export const staticRoutes: RouteRecordRaw[] = [
       {
         path: "",
         name: "Home",
-        component: () => import("@/views/test1/test11.vue"),
+        component: () => import("@/views/home/index.vue"),
         meta: {
           title: "首页",
           elIcon: "HomeFilled",
@@ -134,17 +134,17 @@ export const staticRoutes: RouteRecordRaw[] = [
   },
 ];
 
-export const asyncRoutes: RouteRecordRaw[] = [
-  {
-    path: "/bigScreen",
-    component: () => import("@/views/ChartsView/index.vue"),
-    name: "index",
-    meta: {
-      title: "数字大屏",
-      elIcon: "DataBoard",
-    },
+export const bigScreen: RouteRecordRaw = {
+  path: "/bigScreen",
+  component: () => import("@/views/ChartsView/index.vue"),
+  name: "BigScreen",
+  meta: {
+    title: "数字大屏",
+    elIcon: "DataBoard",
   },
-];
+};
+
+export const asyncRoutes: RouteRecordRaw[] = [];
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.VITE_PUBLIC_PATH),

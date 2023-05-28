@@ -50,7 +50,6 @@ const theOnlyOneChild = computed(() => {
 const resolvePath = (routePath: string) => {
   return path.resolve(props.basePath, routePath);
 };
-console.log(props.item);
 </script>
 
 <template>

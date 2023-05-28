@@ -1,4 +1,4 @@
-import router, { asyncRoutes } from "@/router/index.ts";
+import router, { asyncRoutes, bigScreen } from "@/router/index.ts";
 import usePermissionStoreHook from "@/store/permission.ts";
 import { useUserStoreHook } from "@/store/user.ts";
 import NProgress from "nprogress";
@@ -19,6 +19,9 @@ router.beforeEach((to, from, next) => {
     asyncRoutes.forEach((route) => {
       router.addRoute(route);
     });
+    if (import.meta.env.VITE_ENV === "gov") {
+      router.addRoute(bigScreen);
+    }
     next({ ...to, replace: true });
   }
 });

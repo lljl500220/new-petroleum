@@ -245,7 +245,6 @@ function getRenderItem(params, api) {
 }
 
 const initChart = (data: number[]) => {
-  console.log(data);
   barChart.value && echarts.dispose(barChart.value);
   const chart = echarts.init(barChart.value);
   chart.setOption(option, false);
