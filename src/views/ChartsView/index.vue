@@ -15,14 +15,14 @@ const router = useRouter();
 const screenWrapper = ref<HTMLElement>();
 const defaultFontSize = ref(16);
 
-const locationString = ref('')
+const locationString = ref("");
 
 /**
  * 计算视图比例，实现等比缩放
  */
 function setFontSize() {
-  let designWidth = 1920; //设计稿的宽度，根据实际项目调整
-  let designHeight = 992; //设计稿的高度，根据实际项目调整
+  const designWidth = 1920; //设计稿的宽度，根据实际项目调整
+  const designHeight = 992; //设计稿的高度，根据实际项目调整
   const fontSize =
     document.documentElement.clientWidth /
       document.documentElement.clientHeight <
@@ -145,53 +145,44 @@ const pieData = reactive({
 });
 const stackBarData = reactive({
   data: [
-    [
-        101,
-        101,
-        101,
-        101,
-        101,
-        101,
-        101,
-        101,
-        101,
-    ],
-    [
-      101,
-      101,
-      101,
-      101,
-      101,
-      101,
-      101,
-      101,
-      101,
-    ],
+    [101, 101, 101, 101, 101, 101, 101, 101, 101, 101],
+    [101, 101, 101, 101, 101, 101, 101, 101, 101, 101],
   ],
 });
 
-const stackBarName = ['贵州省', '贵阳市', '六盘水', '遵义市', '安顺市','毕节市', '铜仁市', '黔南州', '黔西南', '黔东南']
+const stackBarName = [
+  "贵州省",
+  "贵阳市",
+  "六盘水",
+  "遵义市",
+  "安顺市",
+  "毕节市",
+  "铜仁市",
+  "黔南州",
+  "黔西南",
+  "黔东南",
+];
 
 const missRate = ref([
-  {title: '贵阳市', data: [0.5, 0.4, 0.3, 0.2],rate:'10%'},
-  {title: '六盘水', data: [0.5, 0.4, 0.3, 0.2],rate:'20%'},
-  {title: '遵义市', data: [0.5, 0.4, 0.3, 0.2],rate:'30%'},
-  {title: '安顺市', data: [0.5, 0.4, 0.3, 0.2],rate:'100%'},
-  {title: '毕节市', data: [0.5, 0.4, 0.3, 0.2],rate:'20%'},
-  {title: '铜仁市', data: [0.5, 0.4, 0.3, 0.2],rate:'30%'},
-  {title: '黔南州', data: [0.5, 0.4, 0.3, 0.2],rate:'40%'},
-  {title: '黔西南', data: [0.5, 0.4, 0.3, 0.2],rate:'50%'},
-  {title: '黔东南', data: [0.5, 0.4, 0.3, 0.2],rate:'60%'},
-])
+  { title: "贵阳市", data: [0.5, 0.4, 0.3, 0.2], rate: "10%" },
+  { title: "六盘水", data: [0.5, 0.4, 0.3, 0.2], rate: "20%" },
+  { title: "遵义市", data: [0.5, 0.4, 0.3, 0.2], rate: "30%" },
+  { title: "安顺市", data: [0.5, 0.4, 0.3, 0.2], rate: "100%" },
+  { title: "毕节市", data: [0.5, 0.4, 0.3, 0.2], rate: "20%" },
+  { title: "铜仁市", data: [0.5, 0.4, 0.3, 0.2], rate: "30%" },
+  { title: "黔南州", data: [0.5, 0.4, 0.3, 0.2], rate: "40%" },
+  { title: "黔西南", data: [0.5, 0.4, 0.3, 0.2], rate: "50%" },
+  { title: "黔东南", data: [0.5, 0.4, 0.3, 0.2], rate: "60%" },
+]);
 
 const resetChart = (name, index) => {
-  locationString.value = name
+  locationString.value = name;
   map.value.changeMap(name, index);
   lineChart.value.initChart(lineData.data, lineData.xData);
   roseChart.value.initChart(roseData.data);
   barChart.value.initChart(barData.data, barData.formatter);
   pieChart.value.initChart(pieData.data);
-  stackBar.value.initChart(stackBarName,stackBarData.data);
+  stackBar.value.initChart(stackBarName, stackBarData.data);
 };
 
 onMounted(() => {
@@ -221,20 +212,24 @@ onBeforeUnmount(() => {
       <div class="screen-front">
         <div class="front-item">
           <div class="location">
-            <el-icon><MapLocation /></el-icon>
-            <span>{{locationString}}</span>
+            <el-icon>
+              <MapLocation />
+            </el-icon>
+            <span>{{ locationString }}</span>
           </div>
         </div>
         <div class="front-item">
-          <el-button class="link-button" type="primary" size="small">
-            <router-link to="/test/test11">管理后台</router-link>
-          </el-button>
+          <router-link to="/home">
+            <el-button class="link-button" type="primary" size="small"
+              >管理后台</el-button
+            >
+          </router-link>
         </div>
       </div>
       <div class="screen-content">
         <div class="map-container">
           <div class="map-chart-container content-border">
-            <ent-statistic :param="mapStatistic"></ent-statistic>
+            <ent-statistic :param="mapStatistic" />
             <div class="btn-content left">
               <el-button
                 v-for="(item, index) in mapBtnLeft"
@@ -251,46 +246,49 @@ onBeforeUnmount(() => {
                 >{{ item }}
               </el-button>
             </div>
-            <gui-zhou-map ref="map"></gui-zhou-map>
+            <gui-zhou-map ref="map" />
           </div>
           <div class="ent-info-container content-border">
-            <ent-statistic
-              class="statistic-content"
-              :param="entStatistic"
-            ></ent-statistic>
+            <ent-statistic class="statistic-content" :param="entStatistic" />
           </div>
           <div class="scroll-table-container content-border">
-            <business-table></business-table>
+            <business-table />
           </div>
         </div>
         <div class="content-item">
           <div class="item-child content-border">
-            <line-chart ref="lineChart"></line-chart>
+            <line-chart ref="lineChart" />
           </div>
           <div class="item-child content-border">
-            <rose-chart ref="roseChart"></rose-chart>
+            <rose-chart ref="roseChart" />
           </div>
           <div class="item-child content-border">
-            <bar-chart ref="barChart"></bar-chart>
+            <bar-chart ref="barChart" />
           </div>
         </div>
         <div class="content-border content-item-right">
           <div class="pie-chart">
-            <pie-chart ref="pieChart"></pie-chart>
+            <pie-chart ref="pieChart" />
           </div>
           <div class="stack-bar box">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <custom-stack-bar ref="stackBar"></custom-stack-bar>
+            <span />
+            <span />
+            <span />
+            <span />
+            <custom-stack-bar ref="stackBar" />
             <span>加油站关联数据对比</span>
           </div>
           <div class="statistic-box">
-            <miss-statistic v-for="(item,index) in missRate" :title="item.title" :rate="item.rate"
-                            :key="index">
-            </miss-statistic>
-            <span>各地州数据缺失率</span>
+            <span
+              >各地州数据缺失率<el-icon STYLE="vertical-align: middle"
+                ><DArrowRight /></el-icon
+            ></span>
+            <miss-statistic
+              v-for="(item, index) in missRate"
+              :title="item.title"
+              :rate="item.rate"
+              :key="index"
+            />
           </div>
         </div>
       </div>
@@ -357,15 +355,18 @@ $design_height: 992; //设计稿的高度，根据实际项目调整
       .front-item {
         color: #fff;
         margin-bottom: 5px;
-        .location{
+
+        .location {
           display: flex;
           font-family: FangSong, sans-serif;
           font-weight: bold;
-          font-size:  px2rem(25);
-          span{
+          font-size: px2rem(25);
+
+          span {
             margin-left: 10px;
           }
         }
+
         .link-button {
           display: inline-block;
           animation: heartBeat 2s infinite; /* referring directly to the animation's @keyframe declaration */
@@ -373,7 +374,10 @@ $design_height: 992; //设计稿的高度，根据实际项目调整
           background-color: rgba(80, 113, 210, 0.2) !important;
           z-index: 30;
           margin-right: 10px;
-          a{
+
+          a {
+            height: 100%;
+            width: 100%;
             text-decoration: none;
             color: #fff;
           }
@@ -662,19 +666,45 @@ $design_height: 992; //设计稿的高度，根据实际项目调整
             }
           }
         }
+
         .statistic-box {
           text-align: center;
           width: 100%;
           height: px2rem(280);
           display: flex;
           flex-wrap: wrap;
+          justify-content: space-around;
+
           span {
             text-align: center;
-            margin: auto;
+            height: px2rem(80);
+            display: flex;
+            width: px2rem(100);
+            padding-top: 10px;
             color: rgb(55, 162, 255);
             font-family: "SimSun", FangSong, serif;
+            align-items: center;
             font-weight: bold;
             font-size: 1.5rem;
+            @keyframes arrowRight {
+              0% {
+                transform: translateX(0);
+              }
+              100% {
+                transform: translateX(30%);
+              }
+            }
+
+            .el-icon {
+              animation: arrowRight 500ms linear;
+              animation-direction: alternate;
+              animation-iteration-count: infinite;
+            }
+
+            &:hover {
+              text-shadow: 0 0 10px #5b66e3, 0 0 20px #5b66e3, 0 0 30px #5b66e3,
+                0 0 40px #5b66e3;
+            }
           }
         }
       }

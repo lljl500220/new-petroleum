@@ -4,12 +4,49 @@ const Layout = () => import("@/layout/index.vue");
 export const staticRoutes: RouteRecordRaw[] = [
   {
     path: "/",
-    component: () => import("@/views/ChartsView/index.vue"),
-    name: "index",
+    meta: {
+      hidden: true,
+    },
+    redirect: () => {
+      if (import.meta.env.VITE_ENV === "gov") {
+        return "/bigScreen";
+      } else {
+        return "/home";
+      }
+    },
+  },
+  {
+    path: "/redirect",
+    component: Layout,
+    meta: {
+      hidden: true,
+    },
+    children: [
+      {
+        path: "/redirect/:path(.*)",
+        component: () => import("@/views/redirect/index.vue"),
+      },
+    ],
+  },
+  {
+    path: "/home",
+    component: Layout,
     meta: {
       title: "首页",
-      elIcon: "HomeFilled",
+      elIcon: "Document",
     },
+    children: [
+      {
+        path: "",
+        name: "Home",
+        component: () => import("@/views/test1/test11.vue"),
+        meta: {
+          title: "首页",
+          elIcon: "HomeFilled",
+          affix: true,
+        },
+      },
+    ],
   },
   {
     path: "/404",
@@ -97,10 +134,20 @@ export const staticRoutes: RouteRecordRaw[] = [
   },
 ];
 
-export const asyncRoutes: RouteRecordRaw[] = [];
+export const asyncRoutes: RouteRecordRaw[] = [
+  {
+    path: "/bigScreen",
+    component: () => import("@/views/ChartsView/index.vue"),
+    name: "index",
+    meta: {
+      title: "数字大屏",
+      elIcon: "DataBoard",
+    },
+  },
+];
 
 const router = createRouter({
-  history: createWebHistory("/"),
+  history: createWebHistory(import.meta.env.VITE_PUBLIC_PATH),
   routes: staticRoutes,
 });
 

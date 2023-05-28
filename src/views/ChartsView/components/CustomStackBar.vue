@@ -7,7 +7,7 @@ const option = reactive({
   // 直角坐标系内绘图网格,设置组件距离容器的距离
   grid:{
     top:20,
-    bottom:55,
+    bottom:65,
     right:10
   },
   title:{
