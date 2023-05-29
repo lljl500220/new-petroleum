@@ -66,4 +66,8 @@ const props = defineProps({
 a {
   text-decoration: none;
 }
+
+:deep(.el-tag__content){
+  color: #fff
+}
 </style>

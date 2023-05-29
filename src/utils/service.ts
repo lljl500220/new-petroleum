@@ -1,9 +1,12 @@
 import axios, { type AxiosInstance, type AxiosRequestConfig } from "axios";
 import { useUserStoreHook } from "@/store/user";
+import useLogStoreHook from "@/store/log.ts";
 import { get } from "lodash-es";
 import { getToken } from "./cache/cookies";
 // @ts-ignore
 import { ElMessage } from "element-plus";
+
+const logStore = useLogStoreHook();
 
 /** 创建请求实例 */
 function createService() {
@@ -13,7 +16,9 @@ function createService() {
   service.interceptors.request.use(
     (config) => config,
     // 发送失败
-    (error) => Promise.reject(error)
+    (error) => {
+      return Promise.reject(error);
+    }
   );
   // 响应拦截（可根据具体业务作出相应的调整）
   service.interceptors.response.use(
@@ -24,12 +29,21 @@ function createService() {
       const code = apiData.resCode;
       // 如果没有 Code, 代表这不是项目后端开发的 API
       if (code === undefined) {
+        logStore.setLog({
+          // @ts-ignore
+          pageName: logStore.currentRoute.meta.title,
+          path: <string>response.config.url,
+          status: response.status,
+          time: new Date().toLocaleTimeString(),
+          type: <string>response.config.method,
+          request: response.config.data || "无",
+        });
         ElMessage.error("非本系统的接口");
         return Promise.reject(new Error("非本系统的接口"));
       } else {
         switch (code) {
           case "000000":
-            // code === 0 代表没有错误
+            // code === 000000 代表没有错误
             return apiData;
           default:
             // 不是正确的 Code
@@ -41,6 +55,15 @@ function createService() {
     (error) => {
       // Status 是 HTTP 状态码
       const status = get(error, "response.status");
+      logStore.setLog({
+        // @ts-ignore
+        pageName: logStore.currentRoute.meta.title,
+        path: error.config.url,
+        status: status,
+        time: new Date().toLocaleTimeString(),
+        type: error.config.method,
+        request: error.config.data || "无",
+      });
       switch (status) {
         case 400:
           error.message = "请求错误";

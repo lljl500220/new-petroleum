@@ -12,10 +12,13 @@ const props = defineProps({
 </script>
 
 <template>
-  <el-descriptions direction="vertical" :column="4" size="default" border>
-    <el-descriptions-item label="事件名">{{
-      props.item.name
+  <el-descriptions direction="vertical" :column="5" size="default" border>
+    <el-descriptions-item label="业务页">{{
+      props.item.pageName
     }}</el-descriptions-item>
+    <el-descriptions-item label="请求路径">{{
+        props.item.path
+      }}</el-descriptions-item>
     <el-descriptions-item label="时间">{{
       props.item.time
     }}</el-descriptions-item>
@@ -23,7 +26,7 @@ const props = defineProps({
       props.item.type
     }}</el-descriptions-item>
     <el-descriptions-item label="响应状态">
-      <el-tag :type="props.item?.status === 200 ? 'success' : 'warning'">{{
+      <el-tag :type="props.item?.status === 200 ? 'success' : 'error'">{{
         props.item.status
       }}</el-tag>
     </el-descriptions-item>

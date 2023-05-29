@@ -71,5 +71,6 @@
     "{!(package)*.json,.!(browserslist)*rc}": [
       "prettier --write--parser json"
     ]
-  }
+  },
+  "license": "MIT"
 }

@@ -2,8 +2,13 @@
 import Notify from "@/components/Notify/index.vue";
 import Log from "@/components/Log/index.vue";
 import { useLogStore } from "@/store/log.ts";
+import { get } from "@/utils/http.ts";
 
 const logStore = useLogStore();
+
+get("/oilg/login/getUserInfo")
+  .then((res) => {})
+  .catch((err) => {});
 
 const msgList = [
   { type: 1, title: "有消息", content: "123123123" },
@@ -15,14 +20,6 @@ const msgList = [
   { type: 3, title: "有消息", content: "123123123" },
   { type: 4, title: "有消息", content: "123123123" },
 ];
-
-logStore.setLog({
-  name: "用户信息",
-  time: "2023-5-29",
-  status: 200,
-  request: "{phone:1000000}",
-  type: "post",
-});
 </script>
 <template>
   <div class="app-container">
@@ -46,14 +43,18 @@ logStore.setLog({
             </el-descriptions-item>
           </el-descriptions>
         </el-card>
-        <el-card class="margin-top-15" header="本地网络日志">
-          <el-card v-for="(item, index) in logStore.logList" :key="index">
+        <el-card class="margin-top-15 log-content" header="本地网络日志">
+          <el-card
+            class="log-item"
+            v-for="(item, index) in logStore.logList"
+            :key="index"
+          >
             <log :item="item" />
           </el-card>
         </el-card>
       </el-col>
       <el-col :span="8">
-        <el-card header="待办事项">
+        <el-card class="log-content" header="待办事项">
           <el-card
             class="margin-top-15"
             :key="index"
@@ -75,5 +76,25 @@ logStore.setLog({
   border: none;
   font-size: 16px;
   font-weight: 700;
+}
+.log-content {
+  max-height: 1000px;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #9fc5d2;
+    border-radius: 5px;
+
+    &:hover {
+      background-color: #a6a3a3;
+    }
+  }
+  .log-item {
+    margin-top: 5px;
+  }
 }
 </style>

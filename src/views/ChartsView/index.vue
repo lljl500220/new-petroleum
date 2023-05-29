@@ -10,6 +10,7 @@ import BarChart from "@/views/ChartsView/components/BarChart.vue";
 import PieChart from "@/views/ChartsView/components/PieChart.vue";
 import MissStatistic from "@/views/ChartsView/components/MissStatistic.vue";
 import CustomStackBar from "@/views/ChartsView/components/CustomStackBar.vue";
+import {get} from "@/utils/http.ts";
 
 const router = useRouter();
 const screenWrapper = ref<HTMLElement>();
