@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import CustomStackBar from "@/views/ChartsView/components/CustomStackBar.vue";
+import CustomStackBar from '@/views/ChartsView/components/CustomStackBar.vue'
 </script>
 
 <template>

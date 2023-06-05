@@ -13,13 +13,13 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from "vue";
+import { onMounted } from 'vue'
 
 onMounted(() => {
-  document.querySelectorAll("span").forEach((span, index) => {
-    span.style.setProperty("--delay", `${index * 150}ms`);
-  });
-});
+  document.querySelectorAll('span').forEach((span, index) => {
+    span.style.setProperty('--delay', `${index * 150}ms`)
+  })
+})
 </script>
 <style scoped lang="less">
 body html {
@@ -49,7 +49,7 @@ body html {
 }
 
 .loading::before {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
   /* 默认角度是从上到下，90deg 逆时针旋转后变成从左到右渐变 */
@@ -72,7 +72,7 @@ body html {
 
 /* 使用一个和 ::before 相同的 作为霓虹灯特效 */
 .loading::after {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
   background: linear-gradient(

@@ -1,25 +1,25 @@
 <script setup lang="ts">
-import SideBarItem from "@/layout/components/SideBar/SideBarItem.vue";
+import SideBarItem from '@/layout/components/SideBar/SideBarItem.vue'
 
-import { usePermissionStore } from "@/store/permission.ts";
-import { useMenuStore } from "@/store/menu.ts";
-import { watch } from "vue";
-import { useRoute } from "vue-router";
+import { usePermissionStore } from '@/store/permission.ts'
+import { useMenuStore } from '@/store/menu.ts'
+import { watch } from 'vue'
+import { useRoute } from 'vue-router'
 
-const permissionStore = usePermissionStore();
-const menuStore = useMenuStore();
-const route = useRoute();
+const permissionStore = usePermissionStore()
+const menuStore = useMenuStore()
+const route = useRoute()
 
 watch(
   () => menuStore.collapse,
   (newValue) => {
     if (newValue) {
-      document.documentElement.style.setProperty("--np-sidebar-width", "60px");
+      document.documentElement.style.setProperty('--np-sidebar-width', '60px')
     } else {
-      document.documentElement.style.setProperty("--np-sidebar-width", "220px");
+      document.documentElement.style.setProperty('--np-sidebar-width', '220px')
     }
   }
-);
+)
 </script>
 <template>
   <div class="menu-container">

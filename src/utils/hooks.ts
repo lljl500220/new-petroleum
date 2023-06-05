@@ -1,1 +1,1 @@
-export const getTime = () => {};
+export const getTime = () => {}

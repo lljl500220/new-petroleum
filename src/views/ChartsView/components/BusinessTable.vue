@@ -23,7 +23,7 @@
 </template>
 
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, Ref, ref } from "vue";
+import { onBeforeUnmount, onMounted, Ref, ref } from 'vue'
 
 const businessData = ref([
   {
@@ -32,7 +32,7 @@ const businessData = ref([
     refueling_time: 123,
     station_no: 123,
     oil_quantity: 123,
-    refueling_amount: 123,
+    refueling_amount: 123
   },
   {
     region: 123,
@@ -40,7 +40,7 @@ const businessData = ref([
     refueling_time: 123,
     station_no: 123,
     oil_quantity: 123,
-    refueling_amount: 123,
+    refueling_amount: 123
   },
   {
     region: 123,
@@ -48,7 +48,7 @@ const businessData = ref([
     refueling_time: 123,
     station_no: 123,
     oil_quantity: 123,
-    refueling_amount: 123,
+    refueling_amount: 123
   },
   {
     region: 123,
@@ -56,7 +56,7 @@ const businessData = ref([
     refueling_time: 123,
     station_no: 123,
     oil_quantity: 123,
-    refueling_amount: 123,
+    refueling_amount: 123
   },
   {
     region: 123,
@@ -64,7 +64,7 @@ const businessData = ref([
     refueling_time: 123,
     station_no: 123,
     oil_quantity: 123,
-    refueling_amount: 123,
+    refueling_amount: 123
   },
   {
     region: 123,
@@ -72,7 +72,7 @@ const businessData = ref([
     refueling_time: 123,
     station_no: 123,
     oil_quantity: 123,
-    refueling_amount: 123,
+    refueling_amount: 123
   },
   {
     region: 123,
@@ -80,7 +80,7 @@ const businessData = ref([
     refueling_time: 123,
     station_no: 123,
     oil_quantity: 123,
-    refueling_amount: 123,
+    refueling_amount: 123
   },
   {
     region: 123,
@@ -88,63 +88,63 @@ const businessData = ref([
     refueling_time: 123,
     station_no: 123,
     oil_quantity: 123,
-    refueling_amount: 123,
-  },
-]);
+    refueling_amount: 123
+  }
+])
 
 //改变行的样式
 const getRowClass = (value: { row: any; rowIndex: number }) => {
-  if (value.rowIndex % 2 === 0) return "light-row";
-  return "deep-row";
-};
+  if (value.rowIndex % 2 === 0) return 'light-row'
+  return 'deep-row'
+}
 
-const table: Ref<any> = ref(null);
-const interNal: Ref<any> = ref(null);
-const scrollTo: Ref<any> = ref(null);
-const top: Ref<number> = ref(0);
+const table: Ref<any> = ref(null)
+const interNal: Ref<any> = ref(null)
+const scrollTo: Ref<any> = ref(null)
+const top: Ref<number> = ref(0)
 
 const cellMouseEnter = () => {
-  clearInterval(interNal.value);
-};
+  clearInterval(interNal.value)
+}
 
 const cellMouseLeave = () => {
   interNal.value = setInterval(() => {
     if (
       top.value +
         table.value.$refs.bodyWrapper.getElementsByClassName(
-          "el-scrollbar__wrap"
+          'el-scrollbar__wrap'
         )[0].clientHeight >=
       table.value.$refs.bodyWrapper.children[0].children[0].children[0]
         .scrollHeight
     )
-      top.value = 0;
-    else top.value += 1;
-    scrollTo.value(0, top.value);
-  }, 50);
-};
+      top.value = 0
+    else top.value += 1
+    scrollTo.value(0, top.value)
+  }, 50)
+}
 
 onMounted(() => {
-  scrollTo.value = table.value.scrollTo;
-  top.value = 0;
+  scrollTo.value = table.value.scrollTo
+  top.value = 0
   interNal.value = setInterval(() => {
     if (
       top.value +
         table.value.$refs.bodyWrapper.getElementsByClassName(
-          "el-scrollbar__wrap"
+          'el-scrollbar__wrap'
         )[0].clientHeight >=
       table.value.$refs.bodyWrapper.getElementsByClassName(
-        "el-scrollbar__wrap"
+        'el-scrollbar__wrap'
       )[0].scrollHeight
     )
-      top.value = 0;
-    else top.value += 0.2;
-    scrollTo.value(0, top.value);
-  }, 10);
-});
+      top.value = 0
+    else top.value += 0.2
+    scrollTo.value(0, top.value)
+  }, 10)
+})
 
 onBeforeUnmount(() => {
-  clearInterval(interNal.value);
-});
+  clearInterval(interNal.value)
+})
 </script>
 
 <style scoped lang="scss">

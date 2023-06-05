@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import TitleBar from "@/layout/components/NavigationBar/TitleBar.vue";
-import LogoBar from "@/layout/components/NavigationBar/LogoBar.vue";
-import SettingBar from "@/layout/components/NavigationBar/SettingBar.vue";
+import TitleBar from '@/layout/components/NavigationBar/TitleBar.vue'
+import LogoBar from '@/layout/components/NavigationBar/LogoBar.vue'
+import SettingBar from '@/layout/components/NavigationBar/SettingBar.vue'
 </script>
 
 <template>

@@ -1,14 +1,13 @@
 <script setup lang="ts">
-import { PropType } from "vue";
-import { Log } from "@/store/log.ts";
+import { PropType } from 'vue'
+import { Log } from '@/store/log.ts'
 
 const props = defineProps({
   item: {
     type: Object as PropType<Log>,
-    required: true,
-  },
-});
-
+    required: true
+  }
+})
 </script>
 
 <template>
@@ -17,8 +16,8 @@ const props = defineProps({
       props.item.pageName
     }}</el-descriptions-item>
     <el-descriptions-item label="请求路径">{{
-        props.item.path
-      }}</el-descriptions-item>
+      props.item.path
+    }}</el-descriptions-item>
     <el-descriptions-item label="时间">{{
       props.item.time
     }}</el-descriptions-item>
@@ -36,5 +35,4 @@ const props = defineProps({
   </el-descriptions>
 </template>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>

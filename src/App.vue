@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import zhCn from "element-plus/lib/locale/lang/zh-cn";
+import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 
-const locale = zhCn;
+const locale = zhCn
 </script>
 
 <template>
@@ -11,5 +11,5 @@ const locale = zhCn;
 </template>
 
 <style scoped lang="less">
-@import "src/assets/less/index.less";
+@import 'src/assets/less/index.less';
 </style>

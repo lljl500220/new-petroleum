@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { useUserStore } from "@/store/user.ts";
-import Screenfull from "@/components/Screenfull/index.vue";
-import { ref } from "vue";
+import { useUserStore } from '@/store/user.ts'
+import Screenfull from '@/components/Screenfull/index.vue'
+import { ref } from 'vue'
 
-const userStore = useUserStore();
-const showScreenfull = ref(true);
+const userStore = useUserStore()
+const showScreenfull = ref(true)
 const logout = () => {
-  console.log("logout");
-  showScreenfull.value = true;
-};
+  console.log('logout')
+  showScreenfull.value = true
+}
 </script>
 
 <template>

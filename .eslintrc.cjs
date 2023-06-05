@@ -69,8 +69,11 @@ module.exports = {
 		"prettier/prettier": [
 			"error",
 			{
-				endOfLine: "auto"
-			}
+				semi: false, // 去掉结尾的分号
+				singleQuote: true,// 单引号替代双引号
+				trailingComma: "none"// 末尾禁止添加逗号
+			},
+
 		]
 	}
 }

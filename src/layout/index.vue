@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import AppMain from "@/layout/components/AppMain.vue";
-import { SideBar, TagsView, NavigationBar } from "@/layout/components/index.ts";
+import AppMain from '@/layout/components/AppMain.vue'
+import { SideBar, TagsView, NavigationBar } from '@/layout/components/index.ts'
 </script>
 
 <template>

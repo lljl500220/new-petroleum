@@ -12,18 +12,18 @@
 
 <script setup lang="ts">
 interface Props {
-  param: Statistic[];
+  param: Statistic[]
 }
 
 interface Statistic {
-  title: string;
-  value: number;
-  span: number;
-  right: boolean;
-  left: boolean;
+  title: string
+  value: number
+  span: number
+  right: boolean
+  left: boolean
 }
 
-const props = defineProps<Props>();
+const props = defineProps<Props>()
 </script>
 
 <style scoped lang="scss">

@@ -1,55 +1,55 @@
 <script setup lang="ts">
-import { RouteRecordRaw } from "vue-router";
-import { computed, PropType } from "vue";
-import path from "path-browserify";
-import { useMenuStore } from "@/store/menu.ts";
+import { RouteRecordRaw } from 'vue-router'
+import { computed, PropType } from 'vue'
+import path from 'path-browserify'
+import { useMenuStore } from '@/store/menu.ts'
 
-const menuStore = useMenuStore();
+const menuStore = useMenuStore()
 
 const props = defineProps({
   item: {
     type: Object as PropType<RouteRecordRaw>,
-    required: true,
+    required: true
   },
   basePath: {
     type: String,
-    default: "",
-  },
-});
+    default: ''
+  }
+})
 
 const alwaysShowRootMenu = computed(() => {
-  return props.item.meta && props.item.meta.alwaysShow;
-});
+  return props.item.meta && props.item.meta.alwaysShow
+})
 
 const showingChildNumber = computed(() => {
   if (props.item.children) {
     const showingChildren = props.item.children.filter((item) => {
-      return !(item.meta && item.meta.hidden);
-    });
-    return showingChildren.length;
+      return !(item.meta && item.meta.hidden)
+    })
+    return showingChildren.length
   }
-  return 0;
-});
+  return 0
+})
 
 const theOnlyOneChild = computed(() => {
   if (showingChildNumber.value > 1) {
-    return null;
+    return null
   }
   if (props.item.children) {
     for (const child of props.item.children) {
       if (!child.meta || !child.meta.hidden) {
-        return child;
+        return child
       }
     }
   }
   // If there is no children, return itself with path removed,
   // because this.basePath already contains item's path information
-  return { ...props.item, path: "" };
-});
+  return { ...props.item, path: '' }
+})
 
 const resolvePath = (routePath: string) => {
-  return path.resolve(props.basePath, routePath);
-};
+  return path.resolve(props.basePath, routePath)
+}
 </script>
 
 <template>

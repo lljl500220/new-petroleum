@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { useMenuStore } from "@/store/menu.ts";
+import { useMenuStore } from '@/store/menu.ts'
 
-const menuStore = useMenuStore();
+const menuStore = useMenuStore()
 const close = () => {
-  menuStore.collapse = !menuStore.collapse;
-};
+  menuStore.collapse = !menuStore.collapse
+}
 </script>
 
 <template>

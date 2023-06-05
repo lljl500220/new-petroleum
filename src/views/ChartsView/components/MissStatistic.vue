@@ -26,17 +26,17 @@ import {
   ArrowRight,
   CaretBottom,
   CaretTop,
-  Warning,
-} from "@element-plus/icons-vue";
-import { ref } from "vue";
+  Warning
+} from '@element-plus/icons-vue'
+import { ref } from 'vue'
 interface Props {
-  title: string;
-  rate: string;
+  title: string
+  rate: string
 }
 
-const props = defineProps<Props>();
+const props = defineProps<Props>()
 
-const top = ref("-" + props.rate + " + -99%");
+const top = ref('-' + props.rate + ' + -99%')
 </script>
 
 <style scoped lang="scss">
@@ -96,7 +96,7 @@ const top = ref("-" + props.rate + " + -99%");
   }
 }
 .card:before {
-  content: "";
+  content: '';
   width: 100%;
   height: 200%;
   bottom: 0;

@@ -1,25 +1,25 @@
 <script setup lang="ts">
-import Notify from "@/components/Notify/index.vue";
-import Log from "@/components/Log/index.vue";
-import { useLogStore } from "@/store/log.ts";
-import { get } from "@/utils/http.ts";
+import Notify from '@/components/Notify/index.vue'
+import Log from '@/components/Log/index.vue'
+import { useLogStore } from '@/store/log.ts'
+import { get } from '@/utils/http.ts'
 
-const logStore = useLogStore();
+const logStore = useLogStore()
 
-get("/oilg/login/getUserInfo")
+get('/oilg/login/getUserInfo')
   .then((res) => {})
-  .catch((err) => {});
+  .catch((err) => {})
 
 const msgList = [
-  { type: 1, title: "有消息", content: "123123123" },
-  { type: 2, title: "有消息", content: "123123123" },
-  { type: 3, title: "有消息", content: "123123123" },
-  { type: 4, title: "有消息", content: "123123123" },
-  { type: 1, title: "有消息", content: "123123123" },
-  { type: 2, title: "有消息", content: "123123123" },
-  { type: 3, title: "有消息", content: "123123123" },
-  { type: 4, title: "有消息", content: "123123123" },
-];
+  { type: 1, title: '有消息', content: '123123123' },
+  { type: 2, title: '有消息', content: '123123123' },
+  { type: 3, title: '有消息', content: '123123123' },
+  { type: 4, title: '有消息', content: '123123123' },
+  { type: 1, title: '有消息', content: '123123123' },
+  { type: 2, title: '有消息', content: '123123123' },
+  { type: 3, title: '有消息', content: '123123123' },
+  { type: 4, title: '有消息', content: '123123123' }
+]
 </script>
 <template>
   <div class="app-container">

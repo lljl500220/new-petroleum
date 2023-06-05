@@ -1,46 +1,46 @@
 <script setup lang="ts">
-import { PropType } from "vue";
+import { PropType } from 'vue'
 
 const option = [
   {},
   {
     type: 1,
-    title: "预警消息",
-    color: "#79bbff",
-    path: "/policyRegulation/message",
+    title: '预警消息',
+    color: '#79bbff',
+    path: '/policyRegulation/message'
   },
   {
     type: 2,
-    title: "处理消息",
-    color: "#a0cfff",
-    path: "/policyRegulation/message",
+    title: '处理消息',
+    color: '#a0cfff',
+    path: '/policyRegulation/message'
   },
   {
     type: 3,
-    title: "政策消息",
-    color: "#95d475",
-    path: "/policyRegulation/message",
+    title: '政策消息',
+    color: '#95d475',
+    path: '/policyRegulation/message'
   },
   {
     type: 4,
-    title: "平台消息",
-    color: "#c8c9cc",
-    path: "/policyRegulation/message",
-  },
-];
+    title: '平台消息',
+    color: '#c8c9cc',
+    path: '/policyRegulation/message'
+  }
+]
 
 interface target {
-  type: number;
-  title: string;
-  content: string;
+  type: number
+  title: string
+  content: string
 }
 
 const props = defineProps({
   item: {
     type: Object as PropType<target>,
-    required: true,
-  },
-});
+    required: true
+  }
+})
 </script>
 
 <template>
@@ -67,7 +67,7 @@ a {
   text-decoration: none;
 }
 
-:deep(.el-tag__content){
-  color: #fff
+:deep(.el-tag__content) {
+  color: #fff;
 }
 </style>

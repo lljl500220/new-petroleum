@@ -1,20 +1,20 @@
 <script setup lang="ts">
 function setFontSize() {
-  const designWidth = 1920; //设计稿的宽度，根据实际项目调整
-  const designHeight = 1080; //设计稿的高度，根据实际项目调整
+  const designWidth = 1920 //设计稿的宽度，根据实际项目调整
+  const designHeight = 1080 //设计稿的高度，根据实际项目调整
   const fontSize =
     document.documentElement.clientWidth /
       document.documentElement.clientHeight <
     designWidth / designHeight
       ? (document.documentElement.clientWidth / designWidth) * 12
-      : (document.documentElement.clientHeight / designHeight) * 12;
-  document.querySelector("html").style.fontSize = fontSize + "px";
-  console.log(fontSize);
+      : (document.documentElement.clientHeight / designHeight) * 12
+  document.querySelector('html').style.fontSize = fontSize + 'px'
+  console.log(fontSize)
 }
 
 window.onresize = function () {
-  setFontSize();
-};
+  setFontSize()
+}
 </script>
 
 <template>

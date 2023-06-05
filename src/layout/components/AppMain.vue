@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { computed } from "vue";
-import { useRoute } from "vue-router";
-import { useTagsStore } from "@/store/tags.ts";
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+import { useTagsStore } from '@/store/tags.ts'
 
-const route = useRoute();
-const tagsViewStore = useTagsStore();
+const route = useRoute()
+const tagsViewStore = useTagsStore()
 
 const key = computed(() => {
-  return route.path;
-});
+  return route.path
+})
 </script>
 
 <template>

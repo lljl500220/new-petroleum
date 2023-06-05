@@ -3,81 +3,81 @@
 </template>
 
 <script setup lang="ts">
-import * as echarts from "echarts";
-import { reactive, ref } from "vue";
+import * as echarts from 'echarts'
+import { reactive, ref } from 'vue'
 
-const roseChart: any = ref(null);
+const roseChart: any = ref(null)
 
 const option = reactive({
   tooltip: {
-    trigger: "item",
-    formatter: "{b} : {c}(万元)({d}%)",
+    trigger: 'item',
+    formatter: '{b} : {c}(万元)({d}%)'
   },
   legend: {
     show: false,
-    icon: "rect",
-    orient: "vertical",
+    icon: 'rect',
+    orient: 'vertical',
     right: 0,
     itemHeight: 15,
     itemWidth: 15,
     textStyle: {
-      color: "rgb(55, 162, 255)",
+      color: 'rgb(55, 162, 255)',
       fontSize: 10,
-      padding: [0, 0, 0, 1],
-    },
+      padding: [0, 0, 0, 1]
+    }
   },
   graphic: {
     show: true,
-    type: "text",
-    left: "34%",
-    top: "48%",
+    type: 'text',
+    left: '34%',
+    top: '48%',
     style: {
-      textAlign: "center",
-    },
+      textAlign: 'center'
+    }
   },
   series: [
     {
-      radius: ["20%", "70%"],
+      radius: ['20%', '70%'],
       // center: ["35%", "50%"],
-      roseType: "area",
-      type: "pie",
+      roseType: 'area',
+      type: 'pie',
       avoidLabelOverlap: false,
       label: {
-        formatter: "{b}{d}%",
-        fontWeight: "normal",
-        fontSize: "1.2rem",
-        color: "rgb(55, 162, 255)",
+        formatter: '{b}{d}%',
+        fontWeight: 'normal',
+        fontSize: '1.2rem',
+        color: 'rgb(55, 162, 255)'
       },
       itemStyle: {
-        borderRadius: 2,
+        borderRadius: 2
       },
       labelLine: {
         normal: {
-          length: 5,
-        },
+          length: 5
+        }
       },
       data: [],
       emphasis: {
         itemStyle: {
           shadowBlur: 0,
           shadowOffsetX: 0,
-          shadowColor: "rgba(0, 0, 0, 0.5)",
-        },
-      },
-    },
-  ],
-});
+          shadowColor: 'rgba(0, 0, 0, 0.5)'
+        }
+      }
+    }
+  ]
+})
 
 const initChart = (data: any[]) => {
-  roseChart.value && echarts.dispose(roseChart.value);
-  option.series[0].data = data;
-  const chart = echarts.init(roseChart.value);
-  chart.setOption(option, false);
-  window.addEventListener("resize", function () {
-    chart.resize();
-  });
-};
-defineExpose({ initChart });
+  roseChart.value && echarts.dispose(roseChart.value)
+  option.series[0].data = data
+  const chart = echarts.init(roseChart.value)
+  chart.setOption(option, false)
+  window.addEventListener('resize', function () {
+    chart.resize()
+  })
+}
+defineExpose({ initChart })
 </script>
 
 <style scoped lang="scss">
