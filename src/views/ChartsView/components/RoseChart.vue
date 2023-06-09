@@ -56,7 +56,7 @@ const option = reactive({
           length: 5
         }
       },
-      data: [],
+      data: [] as any[],
       emphasis: {
         itemStyle: {
           shadowBlur: 0,
