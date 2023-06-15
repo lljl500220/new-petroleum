@@ -33,11 +33,13 @@ const key = computed(() => {
     100% - var(--np-title-wrapper-height) - var(--np-tagsview-height)
   );
   width: calc(100% - var(--np-sidebar-width));
+  overflow-x: hidden;
   position: absolute;
   transition: all 0.28s;
   right: 0;
   top: calc(var(--np-title-wrapper-height) + var(--np-tagsview-height));
   background-color: var(--np-app-bg-color);
+  z-index: 1;
 }
 
 .fade-transform-leave-active,

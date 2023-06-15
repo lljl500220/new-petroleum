@@ -51,7 +51,7 @@ const props = defineProps({
     <span>{{ props.item.content }}</span>
     <router-link
       :style="{ color: option[props.item?.type].color }"
-      :to="option[props.item?.type].path"
+      :to="{ path: option[props.item?.type].path as string }"
       >前去处理</router-link
     >
   </div>

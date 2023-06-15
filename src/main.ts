@@ -3,6 +3,7 @@ import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import 'virtual:svg-icons-register'
 import 'default-passive-events'
 import ElementPlus from 'element-plus'
+import * as echarts from 'echarts'
 
 import App from './App.vue'
 import router from '@/router/index.ts'
@@ -18,6 +19,9 @@ import 'element-plus/dist/index.css'
 import 'animate.css'
 
 const app = createApp(App)
+
+app.config.globalProperties.$echarts = echarts
+
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component)
 }

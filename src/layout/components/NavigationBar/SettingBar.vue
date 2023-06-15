@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { useUserStore } from '@/store/user.ts'
 import Screenfull from '@/components/Screenfull/index.vue'
+import Screenshot from '@/components/Screenshot/index.vue'
 import { ref } from 'vue'
 
 const userStore = useUserStore()
 const showScreenfull = ref(true)
+
 const logout = () => {
   console.log('logout')
   showScreenfull.value = true
@@ -13,11 +15,8 @@ const logout = () => {
 
 <template>
   <div class="right-menu">
-    <Screenfull
-      element=".app-main"
-      openTips="内容区全屏"
-      class="right-menu-item"
-    />
+    <Screenshot class="right-menu-item" />
+    <Screenfull class="right-menu-item" />
     <el-dropdown>
       <div class="el-dropdown-link">
         <el-avatar :size="24">
@@ -25,8 +24,8 @@ const logout = () => {
             <Avatar />
           </el-icon>
         </el-avatar>
-        <span>{{ userStore.username }}</span>
-        <span class="size-small">{{ userStore.phone }}</span>
+        <span>{{ userStore.user.nickName }}</span>
+        <span class="size-small">{{ userStore.user.phone }}</span>
       </div>
       <template #dropdown>
         <el-dropdown-menu>

@@ -8,7 +8,7 @@ export interface Log {
   path: string
   time: string
   status: number
-  request: string
+  res: string
   type: string
 }
 

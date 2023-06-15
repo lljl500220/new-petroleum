@@ -1,7 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const title = import.meta.env.VITE_SYSTEM_TITLE
+</script>
 
 <template>
-  <a>全省成品油一体化监管服务平台</a>
+  <a>{{ title }}</a>
 </template>
 
 <style scoped lang="scss">

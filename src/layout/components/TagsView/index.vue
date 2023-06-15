@@ -25,15 +25,27 @@ const top = ref(0)
 const left = ref(0)
 const selectedTag = ref<ITagView>({})
 let affixTags: ITagView[] = []
-
+/**
+ * 作者：luolj
+ * 时间：2023/06/05 16:02:54
+ * 功能：判断当前tag是否为已激活状态，装载新的class
+ */
 const isActive = (tag: ITagView) => {
   return tag.path === route.path
 }
-
+/**
+ * 作者：luolj
+ * 时间：2023/06/05 16:03:31
+ * 功能：判断当前遍历的tag是否是一个无法销毁的tag，由路由的mate.isAffix决定
+ */
 const isAffix = (tag: ITagView) => {
   return tag.meta?.affix
 }
-
+/**
+ * 作者：luolj
+ * 时间：2023/06/05 16:04:14
+ * 功能：过滤无法销毁的tags，返回一个tags对象，包含所有的tag
+ */
 const filterAffixTags = (routes: RouteRecordRaw[], basePath = '/') => {
   let tags: ITagView[] = []
   routes.forEach((route) => {
@@ -55,7 +67,11 @@ const filterAffixTags = (routes: RouteRecordRaw[], basePath = '/') => {
   })
   return tags
 }
-
+/**
+ * 作者：luolj
+ * 时间：2023/06/05 16:06:28
+ * 功能：初始化tags，装载至pinia做状态管理
+ */
 const initTags = () => {
   affixTags = filterAffixTags(permissionStore.routes)
   for (const tag of affixTags) {
@@ -65,19 +81,31 @@ const initTags = () => {
     }
   }
 }
-
+/**
+ * 作者：luolj
+ * 时间：2023/06/05 16:06:53
+ * 功能：路由变化时添加一个tag，需要先判断tag是否已经添加过了，如果是一个需要缓存的页面，则需要同步添加至缓存对象
+ */
 const addTags = () => {
   if (route.name) {
     tagsViewStore.addVisitedView(route)
     tagsViewStore.addCachedView(route)
   }
 }
-
+/**
+ * 作者：luolj
+ * 时间：2023/06/05 16:09:07
+ * 功能：刷新
+ */
 const refreshSelectedTag = (view: ITagView) => {
   tagsViewStore.delCachedView(view)
   router.replace({ path: '/redirect' + view.path, query: view.query })
 }
-
+/**
+ * 作者：luolj
+ * 时间：2023/06/05 16:09:18
+ * 功能：关闭
+ */
 const closeSelectedTag = (view: ITagView) => {
   tagsViewStore.delVisitedView(view)
   tagsViewStore.delCachedView(view)
@@ -85,7 +113,11 @@ const closeSelectedTag = (view: ITagView) => {
     toLastView(tagsViewStore.visitedViews, view)
   }
 }
-
+/**
+ * 作者：luolj
+ * 时间：2023/06/05 16:09:30
+ * 功能：关闭其它
+ */
 const closeOthersTags = () => {
   if (
     selectedTag.value.fullPath !== route.path &&
@@ -96,7 +128,11 @@ const closeOthersTags = () => {
   tagsViewStore.delOthersVisitedViews(selectedTag.value)
   tagsViewStore.delOthersCachedViews(selectedTag.value)
 }
-
+/**
+ * 作者：luolj
+ * 时间：2023/06/05 16:09:41
+ * 功能：关闭所有
+ */
 const closeAllTags = (view: ITagView) => {
   tagsViewStore.delAllVisitedViews()
   tagsViewStore.delAllCachedViews()
@@ -105,7 +141,11 @@ const closeAllTags = (view: ITagView) => {
   }
   toLastView(tagsViewStore.visitedViews, view)
 }
-
+/**
+ * 作者：luolj
+ * 时间：2023/06/05 16:09:50
+ * 功能：关闭当前后，如果当前是已经激活的，则跳转至最后一个
+ */
 const toLastView = (visitedViews: ITagView[], view: ITagView) => {
   const latestView = visitedViews.slice(-1)[0]
   if (latestView !== undefined && latestView.fullPath !== undefined) {
@@ -120,7 +160,11 @@ const toLastView = (visitedViews: ITagView[], view: ITagView) => {
     }
   }
 }
-
+/**
+ * 作者：luolj
+ * 时间：2023/06/05 16:10:12
+ * 功能：打开右键菜单
+ */
 const openMenu = (tag: ITagView, e: MouseEvent) => {
   const menuMinWidth = 105
   // container margin left

@@ -1,28 +1,60 @@
-import { defineConfig, loadEnv } from "vite";
-import vue from "@vitejs/plugin-vue";
-import * as path from "path";
-import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
-import svgLoader from "vite-svg-loader";
+import { defineConfig, loadEnv } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import * as path from 'path'
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+import svgLoader from 'vite-svg-loader'
+import viteImagemin from 'vite-plugin-imagemin'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
-  const env = loadEnv(mode, process.cwd(), "");
+  const env = loadEnv(mode, process.cwd(), '')
   return {
     base: env.VITE_PUBLIC_PATH,
     plugins: [
       vue(),
       /** 将 SVG 静态图转化为 Vue 组件 */
-      svgLoader({ defaultImport: "url" }),
+      svgLoader({ defaultImport: 'url' }),
       /** SVG */
       createSvgIconsPlugin({
-        iconDirs: [path.resolve(process.cwd(), "src/icons/svg")],
-        symbolId: "icon-[dir]-[name]",
+        iconDirs: [path.resolve(process.cwd(), 'src/icons/svg')],
+        symbolId: 'icon-[dir]-[name]'
       }),
+
+      /** 图片压缩 */
+      viteImagemin({
+        gifsicle: {
+          optimizationLevel: 7,
+          interlaced: false
+        },
+        optipng: {
+          optimizationLevel: 7
+        },
+        mozjpeg: {
+          quality: 20
+        },
+        pngquant: {
+          quality: [0.8, 0.9],
+          speed: 4
+        },
+        svgo: {
+          plugins: [
+            {
+              name: 'removeViewBox'
+            },
+            {
+              name: 'removeEmptyAttrs',
+              active: false
+            }
+          ]
+        }
+      })
     ],
     resolve: {
       alias: {
-        "@": path.resolve(__dirname, "src"),
-      },
+        '@': path.resolve(__dirname, 'src'),
+        '@views': path.resolve(__dirname, 'src/views'),
+        '@assets': path.resolve(__dirname, 'src/assets')
+      }
     },
     server: {
       /** 是否开启 HTTPS */
@@ -39,14 +71,14 @@ export default defineConfig(({ mode }) => {
       strictPort: false,
       /** 接口代理 */
       proxy: {
-        "/api": {
-          target: "http://117.175.182.152:40010/",
+        '/oilg': {
+          target: 'http://117.175.182.152:40010/',
           ws: true,
           /** 是否允许跨域 */
-          changeOrigin: true,
-          rewrite: (path) => path.replace("/api", ""),
-        },
-      },
-    },
-  };
-});
+          changeOrigin: true
+          // rewrite: (path) => path.replace("/api", ""),
+        }
+      }
+    }
+  }
+})

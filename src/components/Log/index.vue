@@ -29,8 +29,8 @@ const props = defineProps({
         props.item.status
       }}</el-tag>
     </el-descriptions-item>
-    <el-descriptions-item label="请求报文">
-      {{ props.item.request }}
+    <el-descriptions-item label="响应信息">
+      {{ props.item.res }}
     </el-descriptions-item>
   </el-descriptions>
 </template>

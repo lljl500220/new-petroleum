@@ -2,13 +2,10 @@
 import Notify from '@/components/Notify/index.vue'
 import Log from '@/components/Log/index.vue'
 import { useLogStore } from '@/store/log.ts'
-import { get } from '@/utils/http.ts'
+import { useUserStore } from '@/store/user.ts'
 
 const logStore = useLogStore()
-
-get('/oilg/login/getUserInfo')
-  .then((res) => {})
-  .catch((err) => {})
+const userStore = useUserStore()
 
 const msgList = [
   { type: 1, title: '有消息', content: '123123123' },
@@ -27,43 +24,54 @@ const msgList = [
       <el-col :span="14">
         <el-card>
           <el-descriptions title="用户信息">
-            <el-descriptions-item label="用户名">123 </el-descriptions-item>
+            <el-descriptions-item label="用户名"
+              >{{ userStore.user.nickName }}
+            </el-descriptions-item>
             <el-descriptions-item label="手机号"
-              >18100000000
+              >{{ userStore.user.phone }}
             </el-descriptions-item>
-            <el-descriptions-item label="归属地区">贵州省</el-descriptions-item>
+            <el-descriptions-item label="归属地区">{{
+              userStore.user.areaFlag
+            }}</el-descriptions-item>
             <el-descriptions-item label="账号等级">
-              <el-tag size="small">省级</el-tag>
+              <el-tag size="small">{{ userStore.user.areaLevel }}</el-tag>
             </el-descriptions-item>
-            <el-descriptions-item label="上次登录时间">
-              2023-05-27
+            <el-descriptions-item label="roleId">
+              {{ userStore.user.roleId }}
             </el-descriptions-item>
             <el-descriptions-item label="权限字符">
-              <el-tag>admin</el-tag>
+              <el-tag>{{ userStore.user.roleUnitCode }}</el-tag>
             </el-descriptions-item>
           </el-descriptions>
         </el-card>
         <el-card class="margin-top-15 log-content" header="本地网络日志">
-          <el-card
-            class="log-item"
-            v-for="(item, index) in logStore.logList"
-            :key="index"
-          >
-            <log :item="item" />
-          </el-card>
+          <el-empty v-if="!logStore.logList || logStore.logList.length === 0" />
+          <div v-else>
+            <el-card
+              class="log-item"
+              v-for="(item, index) in logStore.logList"
+              :key="index"
+            >
+              <log :item="item" />
+            </el-card>
+          </div>
         </el-card>
       </el-col>
       <el-col :span="8">
         <el-card class="log-content" header="待办事项">
-          <el-card
-            class="margin-top-15"
-            :key="index"
-            v-for="(item, index) in msgList"
-          >
-            <notify :item="item" />
-          </el-card>
+          <el-empty v-if="!msgList || msgList.length === 0" />
+          <div v-else>
+            <el-card
+              class="margin-top-15"
+              :key="index"
+              v-for="(item, index) in msgList"
+            >
+              <notify :item="item" />
+            </el-card>
+          </div>
         </el-card>
       </el-col>
+      <el-backtop :right="100" :bottom="100" />
     </el-row>
   </div>
 </template>

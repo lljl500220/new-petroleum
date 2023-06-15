@@ -1,12 +1,18 @@
 import axios, { type AxiosInstance, type AxiosRequestConfig } from 'axios'
-import { useUserStoreHook } from '@/store/user'
-import useLogStoreHook from '@/store/log.ts'
+import useLogStoreHook, { Log } from '@/store/log.ts'
 import { get } from 'lodash-es'
-import { getToken } from './cache/cookies'
+import { getToken } from './cookies'
 // @ts-ignore
 import { ElMessage } from 'element-plus'
 
 const logStore = useLogStoreHook()
+
+export interface resObj {
+  resCode: string
+  result: any
+  resMsg: string
+  page: null
+}
 
 /** 创建请求实例 */
 function createService() {
@@ -24,54 +30,47 @@ function createService() {
   service.interceptors.response.use(
     (response) => {
       // apiData 是 API 返回的数据
-      const apiData = response.data as any
+      const apiData = response.data
+      logStore.setLog(<Log>{
+        pageName: logStore.currentRoute?.meta.title || '尚未加载页面',
+        path: response.config.url as string,
+        status: response.status,
+        time: new Date().toLocaleTimeString(),
+        type: response.config.method as string,
+        res: apiData.resMsg || '无'
+      })
       // 这个 Code 是和后端约定的业务 Code
       const code = apiData.resCode
       // 如果没有 Code, 代表这不是项目后端开发的 API
-      if (code === undefined) {
-        logStore.setLog({
-          // @ts-ignore
-          pageName: logStore.currentRoute.meta.title,
-          path: <string>response.config.url,
-          status: response.status,
-          time: new Date().toLocaleTimeString(),
-          type: <string>response.config.method,
-          request: response.config.data || '无'
-        })
-        ElMessage.error('非本系统的接口')
-        return Promise.reject(new Error('非本系统的接口'))
-      } else {
-        switch (code) {
-          case '000000':
-            // code === 000000 代表没有错误
-            return apiData
-          default:
-            // 不是正确的 Code
-            ElMessage.error(apiData.resMsg || 'Error')
-            return Promise.reject(new Error('Error'))
-        }
+      switch (code) {
+        case '000000':
+          // code === 000000 代表没有错误
+          return apiData
+        default:
+          // 不是正确的 Code
+          ElMessage.error(apiData.resMsg || 'Error')
+          return Promise.reject(new Error(apiData.resMsg))
       }
+      // return apiData;
     },
     (error) => {
       // Status 是 HTTP 状态码
       const status = get(error, 'response.status')
-      logStore.setLog({
-        // @ts-ignore
-        pageName: logStore.currentRoute.meta.title,
+      logStore.setLog(<Log>{
+        pageName: logStore.currentRoute?.meta.title || '尚未加载页面',
         path: error.config.url,
         status: status,
         time: new Date().toLocaleTimeString(),
         type: error.config.method,
-        request: error.config.data || '无'
+        res: '无'
       })
       switch (status) {
         case 400:
           error.message = '请求错误'
           break
         case 401:
+          // logout();
           // Token 过期时，直接退出登录并强制刷新页面（会重定向到登录页）
-          useUserStoreHook().logout()
-          location.reload()
           break
         case 403:
           error.message = '拒绝访问'
@@ -119,7 +118,7 @@ function createRequestFunction(service: AxiosInstance) {
         Authorization: 'Bearer ' + getToken(),
         'Content-Type': get(config, 'headers.Content-Type', 'application/json')
       },
-      timeout: 5000,
+      timeout: 50000,
       baseURL: import.meta.env.VITE_BASE_API,
       data: {}
     }

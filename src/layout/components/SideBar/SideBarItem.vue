@@ -54,7 +54,7 @@ const resolvePath = (routePath: string) => {
 
 <template>
   <div
-    v-if="!props.item?.meta.hidden"
+    v-if="!props.item?.meta?.hidden"
     :class="{ 'simple-mode': menuStore.collapse }"
   >
     <template

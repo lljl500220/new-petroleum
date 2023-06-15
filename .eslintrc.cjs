@@ -11,8 +11,6 @@ module.exports = {
 		"@vue/typescript/recommended",
 		"@vue/prettier",
 		"@vue/eslint-config-typescript"
-		// unplugin-auto-import 自动生成的文件
-		// "./types/.eslintrc-auto-import.json"
 	],
 	parser: "vue-eslint-parser",
 	parserOptions: {
@@ -26,7 +24,7 @@ module.exports = {
 		}
 	},
 	rules: {
-		// TS
+		// TS off交给ts编译器做判断
 		"@typescript-eslint/no-explicit-any": "off",
 		"no-debugger": "off",
 		"@typescript-eslint/explicit-module-boundary-types": "off",
@@ -69,11 +67,11 @@ module.exports = {
 		"prettier/prettier": [
 			"error",
 			{
+				endOfLine: "auto",
 				semi: false, // 去掉结尾的分号
 				singleQuote: true,// 单引号替代双引号
 				trailingComma: "none"// 末尾禁止添加逗号
-			},
-
+			}
 		]
 	}
 }

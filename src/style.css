@@ -10,3 +10,26 @@ body {
 html,body,#app{
     height: 100%;
 }
+:root{
+    --pe-default-color: #AEBBC1;
+    --pe-level-yellow-color: #FFCC66;
+    --pe-level-orange-color: #FA9850;
+    --pe-level-red-color: #DA6755;
+    --pe-level-green-color: #BADC58;
+}
+
+.pe-default{
+    color: var(--pe-default-color) !important;
+}
+.pe-yellow{
+    color: var(--pe-level-yellow-color) !important;
+}
+.pe-orange{
+    color: var(--pe-level-orange-color) !important;
+}
+.pe-red{
+    color: var(--pe-level-red-color) !important;
+}
+.pe-green{
+    color: var(--pe-level-green-color) !important;
+}
